@@ -1,0 +1,25 @@
+body {font-family:Verdana, Geneva, sans-serif;font-size:18px;}
+.fb{font-weight:bold;}
+.fr{float:right;}
+.fl{float:left;}
+.cbo{clear:both;}
+.hidden_link .hide {display:none;}
+.dontPrint{display: none;}
+.doPrint{display: block;}
+.print{ display: block !important; }
+.brd_b{border:none;}
+.brd_print {border:1px solid #000;}
+.bill_bg {background:url('../images/lotus_logo.png') no-repeat center;display: block !important;}
+#popup,.dn {display:none;}
+.company_head {padding:10px;border:1px solid #333;text-align:center;}
+.print_pad{padding:3px;}
+.print_mt10{margin-top:10px;}
+.bill_width{width:100%;}
+.bill_width_print{width:100%;}
+.bill_half_width{width:50%;}
+table {border-collapse:collapse;}
+tr.border td {border-width:1px 0px;border-style:solid;border-color:#333; }
+tr.border td.first {border-width:1px 0px 1px 1px;border-style:solid;border-color:#333;}
+tr.border td.last {border-width:1px 1px 1px 0px;border-style:solid;border-color:#333;}
+tr.print_all_borders th, tr.print_all_borders td {border:1px solid #333;}
+.print_tc{text-align:center;}

@@ -1,0 +1,7 @@
+1. admin panel - accounts of buyer and farmer
+2. serial number for auction list and weight list
+3. day book of farmer and buyer - format ( name - village/town - amount credited )
+4. summary of each buyer in auction list
+5. inter connection between auxtion list and weight list
+6. multiple buyers
+7. total cost in weight list before buyer

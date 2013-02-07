@@ -1,0 +1,43 @@
+1. Received farmer bill notification, with description field
+2. Compnay address and buyer address in buyer bill
+3. Bill number in farmer bill
+4. table sorter plugin addition in view weight list
+
+------ dead line (saturday Feb 4th) -------
+
+*********************************************
+Karthik updates:
+----------------
+1.
+
+*********************************************
+
+
+
+// 1. Take Backup feature (4 hours)
+
+// * shortcut name for farmer
+// * bill received by description - name -> create extra field
+// * new button in beside farmer and buyer in auction and weight lists
+
+// AMC
+// ----
+// buyer name | bags | total cost | AMC -> table view
+
+// accounts :
+// ----------
+// 1. add credit - money, date, - 2% of interest calculations per month, (% done)
+2. Farmer account -> credit, date of received, (% done)
+
+*********************************************************************************
+
+// 1. (3 hours) multiple buyers
+1. summary of each buyer in auction list (view by farmer)
+2. (5 hours) admin panel - accounts of buyer and farmer
+3. (1 hour) day book of farmer and buyer - format ( name - village/town - amount credited )
+4. consolidated buyer list
+5. (1 hour) inter connection between auction list and weight list
+6. farmer deductions weightments chargers 3 rs per bag
+// (1 hour) view serial number in auction list and weight list
+
+*********************************************************************************

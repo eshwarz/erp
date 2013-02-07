@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{margin:auto 0px; font-size:12px;font-family:Verdana, Geneva, sans-serif}
+#topBar{background:#333;color:#FFF;}
+.contentWidth{width:960px;}
+#content{padding:0px 0px 20px 0px;min-height:200px;}
+#topBarLinks a {font-weight:bold;padding:10px 20px;color:#FFF;text-decoration:none;float:left;}
+#topBarLinks a:hover {background:#555;}
+#topBarLinks a:active {background:#111;}
+#topBarLinks a:focus {background:#111;outline-style:none;}
+label{cursor:pointer;}
+.searchBox{background:#FFF;border:1px solid #AAA;line-height:25px;width:180px;}
+.selectBox{border:1px solid #AAA;padding:3px;width:180px;}
+.selectBox2{border:1px solid #AAA;padding:3px;width:190px;}
+.searchTextBox{border:0px;width:165px;color:#AAA;}
+.button{background:#555;color:#FFF;border:1px solid #333;height:27px;margin-left:-1px;cursor:pointer;}
+.mailAddresses{margin:50px;border:1px solid #AAA;width:850px;height:300px;padding:5px;resize:none;}
+.login{border:1px solid #AAA;padding:4px;width:180px;}
+/*errorReporter (starts)*/
+.errorReporter{padding:5px;background-color:#ffa9a9;color:#000;-moz-border-radius:5px;webkit-border-radius:5px;}
+/*errorReporter (ends)*/
+
+/*form_helper*/
+.sl input[type="radio"] {float:left;margin-top:8px;}
+.UiRadio {cursor:pointer;padding:5px;background-color:#CCC;margin-bottom:2px;}
+.UiRadio-selected {font-weight:bold;cursor:pointer;color:#FFF;padding:5px;background-color:#333;margin-bottom:2px;}

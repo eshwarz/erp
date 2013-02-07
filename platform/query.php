@@ -1,0 +1,120 @@
+<?php
+class query
+{
+	function insert ($table_name,$fields,$values)
+	{
+		$sql = "INSERT INTO ".$table_name." (".$fields.") VALUES (".$values.")";
+		$result = mysql_query($sql);
+		if (!$result)
+		{
+			die("Error in ( ".$sql." ): ".mysql_error());
+		}
+	}
+	
+	function delete ($table_name,$where)
+	{
+		$sql = "DELETE FROM ".$table_name." WHERE ".$where;
+		$result = mysql_query($sql);
+		if (!$result)
+		{
+			die("Error in ( ".$sql." ): ".mysql_error());
+		}
+	}
+	
+	function update ($table_name,$fields,$values,$where)
+	{
+		$exploded_fields = explode(",",$fields);
+		$exploded_values = explode(",",$values);
+		
+		$field_count = count($exploded_fields);
+		
+		//forming partial update statement.
+		$set_values = " SET ";
+		for ($m = 0; $m < $field_count; $m++)
+		{
+			if ($m != $field_count-1)
+				$set_values = $set_values.$exploded_fields[$m]."=".$exploded_values[$m].",";
+			else if ($m == $field_count-1)
+				$set_values = $set_values.$exploded_fields[$m]."=".$exploded_values[$m];
+		}
+		$sql = "UPDATE ".$table_name.$set_values." WHERE ".$where;
+		$result = mysql_query($sql);
+		if (!$result)
+		{
+			die("Error in ( ".$sql." ): ".mysql_error());
+		}
+		
+	}
+	
+	function select ($fields,$table_name,$where,$order_by,$desc,$limit_start,$limit_count)
+	{
+		$exploded_array;
+		if ($fields == '*')
+		{
+			$get_table = 'DESCRIBE '.$table_name;
+			$get_table_result = mysql_query($get_table);
+			while ($get_table_row = mysql_fetch_array($get_table_result))
+			{
+				$exploded_array[] = $get_table_row['Field'];
+			}
+		}
+		else
+		{
+			$exploded_array = explode(",",$fields);
+		}
+		$record_array;
+		if (empty($order_by) && empty($where))
+		{
+			$sql = "SELECT ".$fields." FROM ".$table_name;
+		}
+		else if (!empty($order_by) && empty($where))
+		{
+			//deciding order by desc or asc
+			if ($desc == 0)
+			{
+				$sql = "SELECT ".$fields." FROM ".$table_name." ORDER BY ".$order_by." LIMIT ".$limit_start.",".$limit_count
+				;
+			}
+			else if ($desc == 1)
+			{
+				$sql = "SELECT ".$fields." FROM ".$table_name." ORDER BY ".$order_by." DESC LIMIT ".$limit_start.",".$limit_count
+				;
+			}
+		}
+		else if (empty($order_by) && !empty($where))
+		{
+			$sql = "SELECT ".$fields." FROM ".$table_name." WHERE ".$where;
+		}
+		else if (!empty($order_by) && !empty($where))
+		{
+			//deciding order by desc or asc
+			if ($desc == 0)
+			{
+				$sql = "SELECT ".$fields." FROM ".$table_name." WHERE ".$where." ORDER BY ".$order_by." LIMIT ".$limit_start.",".$limit_count
+				;
+			}
+			else if ($desc == 1)
+			{
+				$sql = "SELECT ".$fields." FROM ".$table_name." WHERE ".$where." ORDER BY ".$order_by." DESC LIMIT ".$limit_start.",".$limit_count
+				;
+			}
+		}
+		
+		$result = mysql_query($sql);
+		if (!$result)
+		{
+			die("Error in ( ".$sql." ): ".mysql_error());
+		}
+		$i = 0;
+		while ($row = mysql_fetch_array($result))
+		{
+			for ($m = 0; $m < count($exploded_array); $m++)
+			{
+				$record_array[$i][$exploded_array[$m]] = $row[$exploded_array[$m]];
+			}
+			$i++;
+		}
+		return $record_array;
+	}
+}
+?>
