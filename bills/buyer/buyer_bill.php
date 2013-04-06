@@ -75,6 +75,7 @@ if (!empty($date))
 	<table cellpadding="5" align="center" class="bill_width">
 		<tr class="brd_b bcd brd_tds">
 			<th align="left">Farmer</th>
+			<th>Village</th>
 			<th>Bags</th>
 			<th>Quality</th>
 			<th>Cost per 100 Kgs</th>
@@ -83,10 +84,23 @@ if (!empty($date))
 		</tr>
 		
 		<?php
+		$sql = "SELECT *
+						FROM lots AS l
+						LEFT JOIN farmers AS f ON l.farmer_id = f.id
+						LEFT JOIN villages AS v ON f.village_id = v.id
+						WHERE l.buyer_id = {$buyerId} AND date = '{$date}'";
+		$result = mysql_query($sql);
+
+		$records = array();
+		while ($row = mysql_fetch_array($result)) {
+			$records[] = $row;
+		}
+
 		$totalsArray;
 		$bagsArray;
-		$db = new query;
-		$records = $db->select("lot_id,quality,lot_number,farmer_id,cost,total_cost","lots","buyer_id=".$buyerId." AND date='".$date."'");
+		$weightsArray;
+		// $db = new query;
+		// $records = $db->select("lot_id,quality,lot_number,farmer_id,cost,total_cost","lots","buyer_id=".$buyerId." AND date='".$date."'");
 		
 		for ($i=0;$i<count($records);$i++)
 		{
@@ -95,7 +109,8 @@ if (!empty($date))
 			
 			$totalCost = $records[$i]['total_cost'];
 			$bags = $records[$i]['lot_number'];
-			$weight = round(($records[$i]['total_cost']/$records[$i]['cost'])*100);
+			$village = $records[$i]['village'];
+			$weightsArray[] = $weight = round(($records[$i]['total_cost']/$records[$i]['cost'])*100);
 			$cost = $records[$i]['cost'];
 			$dbCall = new query;
 			$record = $dbCall->select("quality","quality","id=".$records[$i]['quality']);
@@ -105,34 +120,30 @@ if (!empty($date))
 			?>
 			<tr>
 				<td><?php echo $farmer; ?></td>
+				<td><?php echo $village; ?></td>
 				<td align="center"><?php echo $bags; ?></td>
 				<td align="center"><?php echo $quality; ?></td>
 				<td align="center"><?php echo $cost; ?></td>
 				<td align="center"><?php echo $weight; ?></td>
-				<td class="fb"><?php echo $totalCost; ?></td>
+				<td class="fb" align="right"><?php echo $totalCost; ?></td>
 			</tr>
 			<?php
 		}
 		
 		//calculating totals.
-		$netTotal = 0;
-		for ($j=0;$j<count($totalsArray);$j++)
-		{
-			$netTotal = $netTotal+$totalsArray[$j];
-		}
-		$totalBags = 0;
-		for ($k=0;$k<count($totalsArray);$k++)
-		{
-			$totalBags = $totalBags+$bagsArray[$k];
-		}
+		$netTotal = array_sum($totalsArray);
+		$totalBags = array_sum($bagsArray);
+		$totalWeight = array_sum($weightsArray);
+
 		?>
 		<tr class="brd_b bcd brd_tds">
 			<td></td>
-			<td><?php echo $totalBags; ?></td>
+			<td></td>
+			<td align="center"><?php echo $totalBags; ?></td>
 			<td></td>
 			<td></td>
-			<td></td>
-			<td><?php echo "Rs ".$netTotal." /-"; ?></td>
+			<td align="center"><?php echo $totalWeight; ?></td>
+			<td align="right"><?php echo "Rs ".$netTotal." /-"; ?></td>
 		</tr>
 		<?php
 		$additions = new query;
@@ -146,35 +157,35 @@ if (!empty($date))
 		$rusumFactor = $additionRecord[0]['rusum'];					//percentage
 		?>
 		<tr>
-			<td colspan="5" class="fb" align="right">Net total</td>
+			<td colspan="6" class="fb" align="right">Net total</td>
 			<td align="right" style="padding-right:20px;"><?php echo get_float($netTotal); ?></td>
 		</tr>
 		<tr>
-			<td colspan="5" class="fb" align="right">Association</td>
+			<td colspan="6" class="fb" align="right">Association</td>
 			<td align="right" style="padding-right:20px;"><?php echo $commission = get_float(($commissionFactor*$netTotal)/100); ?></td>
 		</tr>
 		<tr>
-			<td colspan="5" class="fb" align="right">Loading</td>
+			<td colspan="6" class="fb" align="right">Loading</td>
 			<td align="right" style="padding-right:20px;"><?php echo $loading = get_float($loadingFactor*$totalBags); ?></td>
 		</tr>
 		<tr>
-			<td colspan="5" class="fb" align="right">Kata</td>
+			<td colspan="6" class="fb" align="right">Kata</td>
 			<td align="right" style="padding-right:20px;"><?php echo $labour = get_float($labourFactor*$totalBags); ?></td>
 		</tr>
 		<tr>
-			<td colspan="5" class="fb" align="right">Accountant</td>
+			<td colspan="6" class="fb" align="right">Accountant</td>
 			<td align="right" style="padding-right:20px;"><?php echo $gumastha = get_float($gumasthaFactor*$totalBags); ?></td>
 		</tr>
 		<tr>
-			<td colspan="5" class="fb" align="right">Special Packing Charges</td>
+			<td colspan="6" class="fb" align="right">Special Packing Charges</td>
 			<td align="right" style="padding-right:20px;"><?php echo $bags = get_float($bagsFactor*$totalBags); ?></td>
 		</tr>
 		<tr>
-			<td colspan="5" class="fb" align="right">AMC</td>
+			<td colspan="6" class="fb" align="right">AMC</td>
 			<td align="right" style="padding-right:20px;"><?php echo $amc = get_float(($amcFactor*$netTotal)/100); ?></td>
 		</tr>
 		<tr>
-			<td colspan="5" class="fb" align="right">Rusum</td>
+			<td colspan="6" class="fb" align="right">Rusum</td>
 			<td align="right" style="padding-right:20px;"><?php echo $rusum = get_float($rusumFactor*$totalBags); ?></td>
 		</tr>
     <tr>
@@ -182,8 +193,8 @@ if (!empty($date))
 			$grandTotal = $netTotal+$commission+$loading+$labour+$gumastha+$bags+$amc+$rusum;
 			$grandTotal = ceil($grandTotal);
 			?>
-			<td colspan="5" class="fb bcd brd_b" align="right">Grand Total</td>
-			<td class="bcd brd_b fb" id="grand_total" grand_total="<?php echo $grandTotal; ?>" ><?php echo "Rs ".$grandTotal." /-"; ?></td>
+			<td colspan="6" class="fb bcd brd_b" align="right">Grand Total</td>
+			<td align="right" class="bcd brd_b fb" id="grand_total" grand_total="<?php echo $grandTotal; ?>" ><?php echo "Rs ".$grandTotal." /-"; ?></td>
 		</tr>
 		
 		<?php
@@ -195,7 +206,7 @@ if (!empty($date))
 			$add_id = $additions[$p]['id'];
 			?>
 			<tr class="hidden_link" id="remove_addition_<?php echo $add_id; ?>">
-				<td colspan="5" align="right" class="fb"><?php echo ucwords($additions[$p]['description']); ?></td>
+				<td colspan="6" align="right" class="fb"><?php echo ucwords($additions[$p]['description']); ?></td>
 				<td>
 					<span class="custom_addition"><?php echo $additions[$p]['money']; ?></span>
 					<a id="<?php echo $add_id; ?>" class="remove_addition hide" href="#">X</a>
@@ -218,8 +229,8 @@ if (!empty($date))
 		</tr>
 
 		<tr>
-			<td align="right" class="fb" colspan="5">After Additions</td>
-			<td id="after_additions" after_additions="<?php echo $after_additions; ?>"><?php echo "Rs ".$after_additions." /-"; ?></td>
+			<td align="right" class="fb" colspan="6">After Additions</td>
+			<td align="right" id="after_additions" after_additions="<?php echo $after_additions; ?>"><?php echo "Rs ".$after_additions." /-"; ?></td>
 		</tr>
 
 		<tr id="" class="dontPrint">
@@ -237,7 +248,7 @@ if (!empty($date))
 			$sub_id = $credit_usage[$p]['id'];
 			?>
 			<tr class="hidden_link" id="remove_deduction_<?php echo $sub_id; ?>">
-				<td colspan="5" align="right" class="fb"><?php echo $credit_usage[$p]['description'] ?></td>
+				<td colspan="6" align="right" class="fb"><?php echo $credit_usage[$p]['description'] ?></td>
 				<td>
 					<span class="custom_deduction"><?php echo $credit_usage[$p]['money']; ?></span>
 					<a id="<?php echo $sub_id; ?>" class="remove_deduction hide" href="#">X</a>
@@ -249,8 +260,8 @@ if (!empty($date))
 		?>
 
 		<tr id="result_deductions" class="border">
-			<td align="right" class="first fb" colspan="5">Final Bill</td>
-			<td class="last fb" id="final_bill" final_bill="<?php echo $after_deductions; ?>"><?php echo "Rs ".$after_deductions." /-"; ?></td>
+			<td align="right" class="first fb" colspan="6">Final Bill</td>
+			<td align="right" class="last fb" id="final_bill" final_bill="<?php echo $after_deductions; ?>"><?php echo "Rs ".$after_deductions." /-"; ?></td>
 		</tr>
 	</table>
   <?php
