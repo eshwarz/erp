@@ -160,13 +160,13 @@ $settings = settings();
                     if ($settings['serial_numbers'] == 1)
                     {
                         ?>
-                        <input type="submit" class="button" value="Save" id="weightListPost" onclick="ajaxPost('weight_list/weight_list_q.php','farmer_new,village,farmer,quality,buyer,cost,lotNumber,serialNumber','result');this.form.reset();return false;" />
+                        <input type="submit" class="button" value="Save" id="weightListPost" onclick="ajaxPost('weight_list/weight_list_q.php','farmer_new,village,farmer,quality,buyer,cost,lotNumber,serialNumber','result');this.form.reset();document.getElementById('farmer').focus();return false;" />
                         <?php
                     }
                     else
                     {
                         ?>
-                        <input type="submit" class="button" value="Save" id="weightListPost" onclick="ajaxPost('weight_list/weight_list_q.php','farmer_new,village,farmer,quality,buyer,cost,lotNumber','result');this.form.reset();return false;" />
+                        <input type="submit" class="button" value="Save" id="weightListPost" onclick="ajaxPost('weight_list/weight_list_q.php','farmer_new,village,farmer,quality,buyer,cost,lotNumber','result');this.form.reset();document.getElementById('farmer').focus();return false;" />
                         <?php
                     }
                     ?>
