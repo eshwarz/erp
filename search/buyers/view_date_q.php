@@ -156,7 +156,7 @@ if (!empty($date))
 			<td align="right" style='padding-right:20px;'><?php echo $amc = get_float(($amcFactor*$netTotal)/100); ?></td>
 		</tr>
 		<tr>
-			<td colspan="5" class="fb">Rusum (<?php echo $rusumFactor."%"; ?>)</td>
+			<td colspan="5" class="fb">Rusum (<?php echo "Rs ".$rusumFactor."/- per bag"; ?>)</td>
 			<td align="right" style='padding-right:20px;'><?php echo $rusum = get_float($rusumFactor*$totalBags); ?></td>
 		</tr>
         <tr>

@@ -136,14 +136,14 @@ if (!empty($date))
 		$totalWeight = array_sum($weightsArray);
 
 		?>
-		<tr class="brd_b bcd brd_tds">
+		<tr class="brd_b bcd brd_tds border">
+			<td class="first"></td>
+			<td></td>
+			<td align="center" class="fb"><?php echo $totalBags; ?></td>
 			<td></td>
 			<td></td>
-			<td align="center"><?php echo $totalBags; ?></td>
-			<td></td>
-			<td></td>
-			<td align="center"><?php echo $totalWeight; ?></td>
-			<td align="right"><?php echo "Rs ".$netTotal." /-"; ?></td>
+			<td align="center" class="fb"><?php echo $totalWeight; ?></td>
+			<td align="right" class="last fb"><?php echo "Rs ".$netTotal." /-"; ?></td>
 		</tr>
 		<?php
 		$additions = new query;
@@ -188,8 +188,8 @@ if (!empty($date))
 			<td colspan="6" class="fb" align="right">Rusum</td>
 			<td align="right" style="padding-right:20px;"><?php echo $rusum = get_float($rusumFactor*$totalBags); ?></td>
 		</tr>
-    <tr>
-    	<?php
+		<tr>
+			<?php
 			$grandTotal = $netTotal+$commission+$loading+$labour+$gumastha+$bags+$amc+$rusum;
 			$grandTotal = ceil($grandTotal);
 			?>

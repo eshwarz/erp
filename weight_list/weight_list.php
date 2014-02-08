@@ -69,7 +69,7 @@ $settings = settings();
                                 <option value="">Select Farmer</option>
                                 <?php
                                 $db = new query;
-                                $records = $db->select("id,name,village_id","farmers","","name",0,0,1000);
+                                $records = $db->select("id,name,village_id","farmers","","name",0,0,10000);
                                 for ($m=0;$m<count($records);$m++)
                                 {
                                     $get_village_name = $db->select('village','villages','id='.$records[$m]["village_id"]);

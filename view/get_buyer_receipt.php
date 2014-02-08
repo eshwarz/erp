@@ -117,7 +117,7 @@ if (!empty($date))
 		</tr>
 		<tr>
 			<td><?php echo $rusum = ($rusumFactor*$netTotal)/100; ?></td>
-			<td colspan="5" class="fb">Rusum (<?php echo $rusumFactor."%"; ?>)</td>
+			<td colspan="5" class="fb">Rusum (<?php echo "Rs ".$rusumFactor."/- per bag"; ?>)</td>
 		</tr>
         <tr>
         	<?php
