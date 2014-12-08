@@ -1,5 +1,5 @@
 <?php
-error_reporting(5);
+error_reporting(E_ERROR | E_PARSE);
 require_once("../../conn.php");
 $id = $_GET["id"];
 if ($id == "alwl")

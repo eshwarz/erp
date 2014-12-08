@@ -1,5 +1,5 @@
 <?php
-error_reporting(5);
+error_reporting(E_ERROR | E_PARSE);
 require("../conn.php");
 require("../platform/query.php");
 $farmerId = $_REQUEST['farmer_id'];

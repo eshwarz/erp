@@ -1,6 +1,7 @@
 <?php
-error_reporting(5);
+error_reporting(E_ERROR | E_PARSE);
 $tab = "index";
+// require_once("pdo_mysql.php");
 require_once("conn.php");
 require_once("destroy/self_destruct.php");
 self_destruct();

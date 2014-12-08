@@ -1,3 +1,3 @@
 <?php
-error_reporting(5);
+error_reporting(E_ERROR | E_PARSE);
 ?>

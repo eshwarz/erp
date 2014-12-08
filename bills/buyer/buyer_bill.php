@@ -1,5 +1,5 @@
 <?php
-error_reporting(5);
+error_reporting(E_ERROR | E_PARSE);
 $buyerId = $_REQUEST['buyer_id'];
 $date = $_REQUEST['date'];
 require_once("../../conn.php");

@@ -1,5 +1,5 @@
 <?php
-error_reporting(5);
+error_reporting(E_ERROR | E_PARSE);
 require("../conn.php");
 require_once("../platform/query.php");
 require_once("../platform/escape_data.php");

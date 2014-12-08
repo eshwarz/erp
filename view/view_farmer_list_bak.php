@@ -13,7 +13,7 @@ array
   'month' => string 'July' (length=4)
   0 => int 1311161913
 */
-error_reporting(5);
+error_reporting(E_ERROR | E_PARSE);
 require("../conn.php");
 require("../platform/query.php");
 function calculateTotals ($bagsArray,$totalCostsArray)

@@ -1,5 +1,5 @@
 <?php
-error_reporting(5);
+error_reporting(E_ERROR | E_PARSE);
 $buyer_id = $_REQUEST['buyer_id'];
 $bill_id = $_REQUEST['bill_id'];
 require_once('../../platform/helpers/form_helper.php');

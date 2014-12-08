@@ -1,5 +1,5 @@
 <?php
-error_reporting(5);
+error_reporting(E_ERROR | E_PARSE);
 //if database already exists dont show the installation process
 $db = 'tamarind';
 if (mysql_select_db($db, mysql_connect('localhost','root','')))
