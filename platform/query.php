@@ -46,7 +46,7 @@ class query
 		
 	}
 	
-	function select ($fields,$table_name,$where,$order_by,$desc,$limit_start,$limit_count)
+	function select ($fields,$table_name,$where = null,$order_by = null,$desc = null,$limit_start = null,$limit_count = null)
 	{
 		$exploded_array;
 		if ($fields == '*')
