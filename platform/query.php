@@ -116,5 +116,18 @@ class query
 		}
 		return $record_array;
 	}
+
+	function unique_rows($field, $table)
+	{
+		$sql = "SELECT distinct({$field}) FROM {$table}";
+		$result = mysql_query($sql);
+		$i = 0;
+		$record_array;
+		while ($row = mysql_fetch_array($result)) {
+			$record_array[] = $row;
+		}
+		return $record_array;
+	}
+
 }
 ?>

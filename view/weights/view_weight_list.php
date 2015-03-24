@@ -33,29 +33,13 @@ $pending = $_REQUEST['pending'];
                             <?php
 							$datesArray;
 							$db = new query;
-							$records = $db->select("date","lots","","date",1,0,1000);
-							for ($i=0;$i<count($records);$i++)
-							{
-								$dateFlag = 0;
-								$date = $records[$i]['date'];
-								
-								for ($j=0;$j<count($datesArray);$j++)
-								{
-									if($date == $datesArray[$j])
-									{
-										$dateFlag = 1;
-										break;
-									}
-								}
-								
-								if ($dateFlag == 0)
-								{
-									$datesArray[] = $date;
-									?>
-                  	<option value="<?php echo $date; ?>"><?php echo $date; ?></option>
-                  <?php
-								}
-							}
+                            $records = $db->unique_rows('date', 'lots');
+                            for ($i = 0; $i < count($records); $i++) {
+                                $date = $records[$i]['date'];
+                                ?>
+                                <option value="<?php echo $date; ?>"><?php echo $date; ?></option>
+                                <?php
+                            }
 							?>
                         </select>
                     </td>
