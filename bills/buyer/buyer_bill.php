@@ -207,7 +207,7 @@ if (!empty($date))
 			?>
 			<tr class="hidden_link" id="remove_addition_<?php echo $add_id; ?>">
 				<td colspan="6" align="right" class="fb"><?php echo ucwords($additions[$p]['description']); ?></td>
-				<td>
+				<td align="right" style="padding-right:20px;">
 					<span class="custom_addition"><?php echo $additions[$p]['money']; ?></span>
 					<a id="<?php echo $add_id; ?>" class="remove_addition hide" href="#">X</a>
 				</td>

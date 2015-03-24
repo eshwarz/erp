@@ -15,8 +15,8 @@ if (!empty($description) && !empty($money))
 	$get_db_record = $get_db->select('id','buyer_expenses',"description='$description' AND bill_id=$bill_id");
 	?>
 	<tr class="hidden_link" id="remove_addition_<?php echo $get_db_record[0]['id']; ?>">
-		<td class="fb" colspan="5" align="right"><?php echo ucwords($description); ?></td>
-		<td>
+		<td class="fb" colspan="6" align="right"><?php echo ucwords($description); ?></td>
+		<td align="right" style="padding-right:20px;">
 			<span class='custom_addition'><?php echo $money; ?></span>
 			<a href="#" id="<?php echo $get_db_record[0]['id']; ?>" class="remove_addition hide">X</a>
 		</td>

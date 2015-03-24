@@ -18,8 +18,8 @@ if (!empty($money))
 	?>
 
 	<tr class="hidden_link" id="remove_deduction_<?php echo $deduction[0]['id']; ?>">
-		<td class="fb" align="right" colspan="5"><?php echo $description; ?></td>
-		<td>
+		<td class="fb" align="right" colspan="6"><?php echo $description; ?></td>
+		<td align="right" style="padding-right:20px;">
 			<span class="custom_deduction"><?php echo $money; ?></span>
 			<a href="#" id="<?php echo $deduction[0]['id']; ?>" class="remove_deduction hide">X</a>
 		</td>
