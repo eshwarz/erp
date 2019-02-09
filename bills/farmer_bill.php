@@ -343,6 +343,7 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
                             <th width="170px" align="left">Cost per 100 Kgs</th>
                             <th width="100px" align="left">Total Weight</th>
                             <th width="100px">Bags</th>
+                            <th width="100px">Buyer</th>
                             <th width="100px" align="left">Total Cost</th>
                         </tr>
                     </table>
@@ -407,6 +408,7 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
                                     <td width="172px"><?php echo "Rs ".$cost." /-"; ?></td>
                                     <td width="102px"><?php echo $totalWeight." Kgs"; ?></td>
                                     <td width="102px" align="center"><?php echo $lotNumber; ?></td>
+                                    <td width="102px" align="center"><?php echo $buyerName; ?></td>
                                     <td width="102px"><?php echo "Rs ".$totalCost." /-"; ?></td>
                                 </tr>
                             </table>
