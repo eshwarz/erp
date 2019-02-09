@@ -13,7 +13,7 @@
 <script type="text/javascript" src="platform/scripts/ajaxPost.js"></script>
 <script type="text/javascript" src="platform/scripts/autofill.js"></script>
 <script type="text/javascript" src="platform/scripts/keyboard_navigation.js"></script>
-<script type="text/javascript" src="platform/scripts/lightbox.js"></script>
+<script type="text/javascript" src="platform/scripts/lightbox.js?_=<?php echo time() ?>"></script>
 <script type="text/javascript" src="custom_scripts/select_value_on_focus.js"></script>
 <script type="text/javascript" src="custom_scripts/remove_expense.js"></script>
 <script type="text/javascript" src="custom_scripts/remove_credit_payment.js"></script>
@@ -23,7 +23,7 @@
 <script type="text/javascript" src="custom_scripts/remove_quality.js"></script>
 <script type="text/javascript" src="custom_scripts/remove_buyer.js"></script>
 <script type="text/javascript" src="custom_scripts/remove_auction.js"></script>
-<script type="text/javascript" src="custom_scripts/remove_weight.js"></script>
+<script type="text/javascript" src="custom_scripts/remove_weight.js?_=<?php echo time() ?>"></script>
 <script type="text/javascript" src="custom_scripts/buyer_final_bill.js"></script>
 <script type="text/javascript" src="custom_scripts/remove_addition.js"></script>
 <script type="text/javascript" src="custom_scripts/remove_buyer_deduction.js"></script>

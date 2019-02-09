@@ -6,9 +6,12 @@
         	<div class="">
             	
             	<div id="lb_content" class="db c3"></div>
-                
-                <div id="lb_loader" class="pt10 pb10 f20 tc fb c3 dn">
-                	Loading...
+
+                <div id="authentication">
+                    <div class="cbo">
+                        <input type="password" id="auth_password" placeholder="Enter Password to Proceed" style="width: 100%;" />
+                    </div>
+                    <button id="start_authentication" class="button" onclick="startAuthentication(); return false;" style="width: 100%;">Its the CEO bitch!!!</button>
                 </div>
                 
             </div>

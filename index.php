@@ -13,7 +13,7 @@ self_destruct();
 <title>Tamarind Business</title>
 
 <style type="text/css" media="screen">
-@import url("styles/main.css");
+@import url("styles/main.css?_<?php echo time(); ?>");
 @import url("styles/default.css");
 /*@import url("styles/screen.css");*/
 </style>

@@ -51,7 +51,7 @@ if (!empty($date))
 
 	<div class="p5 print_pad">
 		<span class="fb">Buyer:</span> <?php echo $buyer['name']; ?>
-	  <span class="fr"><span class="fb">Date: </span><?php echo $date; ?></span>
+	  <span class="fr"><span class="fb">Date: </span><?php echo date('d-m-Y', strtotime($date)); ?></span>
 	</div>
 
 	<div class="p5 print_pad">

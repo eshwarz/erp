@@ -148,7 +148,7 @@ for ($i=0;$i<count($farmersArray);$i++)
 					<td><?php echo $buyerName; ?></td>
 					<td class="last">
 						<a href="#" class="remove_lot hide" id="<?php echo $records[$j]['lot_id']; ?>">X</a>
-						<a href="#" class="edit_lot hide mr5" id="" onclick="ajaxpage('view/weights/edit_weight.php?id=<?php echo $records[$j]['lot_id']; ?>','lb_content'); open_lb('popup','popup_panel'); return false;">Edit</a>
+						<a href="#" class="edit_lot hide mr5" id="" onclick="open_lb('popup','popup_panel', true, function (){ ajaxpage('view/weights/edit_weight.php?id=<?php echo $records[$j]['lot_id']; ?>','lb_content'); }); return false;">Edit</a>
 					</td>
 				</tr>
 				<?php

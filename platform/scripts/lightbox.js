@@ -40,10 +40,11 @@ function body_width()
 	return scroll_width;
 }
 
-function open_lb(overlay,popupBox)
+function open_lb(overlay, popupBox, password, actionOnPassword)
 {
 	var overlay = document.getElementById(overlay);
 	var lb = document.getElementById(popupBox);
+	var authBox = document.getElementById('authentication');
 	var top_pos = position()+100;
 	var y_len = body_height();
 	var x_len = body_width();
@@ -54,6 +55,20 @@ function open_lb(overlay,popupBox)
 	
 	overlay.style.display = "block";
 	lb.style.display = "block";
+
+
+	if (password === true) {
+		authBox.style.display = "block";
+		var authListener = window.addEventListener('message', function (event) {
+			if (event.data.requester === 'ceo_here') {
+				actionOnPassword();
+				authBox.style.display = "none";
+			}
+			window.removeEventListener('message', authListener);
+		});
+	} else {
+		authBox.style.display = "none";
+	}
 }
 
 function close_lb(overlay,popupBox,loader,content)
@@ -66,4 +81,16 @@ function close_lb(overlay,popupBox,loader,content)
 	overlay.style.display = "none";
 	//document.getElementById(loader).style.display = "block";
 	//document.getElementById(content).style.display = "none";
+}
+
+function startAuthentication() {
+	var authBox = document.getElementById('authentication');
+	var password = document.getElementById('auth_password').value;
+	authBox.value = ''; // clearing password after trying
+	if (btoa(password) === 'THVja3kyMDE2MjI=') {
+		console.log('authenticated succesfully!');
+		window.postMessage({ requester: 'ceo_here' });
+	} else {
+		console.log('wrong password!');
+	}
 }

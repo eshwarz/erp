@@ -98,18 +98,18 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
   
   <div class="fl bill_half_width">
 	<table cellpadding="5" class="bill_width_print">
-    <tr>
-      <td class="fb bcd" colspan="2" align="center">Totals</td>
-    </tr>
+        <tr>
+            <td class="fb bcd" colspan="2" align="center">Totals</td>
+        </tr>
 		<tr>
 			<td class="fb">Net Total</td>
-      <td><?php echo "Rs ".$netTotal." /-"; ?></td>
+            <td><?php echo "Rs ".$netTotal." /-"; ?></td>
 		</tr>
-    <tr>
+        <tr>
 			<td class="fb">Total Deductions</td>
 			<td><?php echo "Rs ".ceil($deductions)." /-"; ?></td>
 		</tr>
-    <tr>
+        <tr>
 			<td class="fb bcd brd_b">Gross Total</td>
 			<td class="bcd brd_b" id="grand_total" grand_total="<?php echo $grandTotal; ?>"><?php echo "Rs ".$grandTotal." /-"; ?></td>
 		</tr>
@@ -143,12 +143,17 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
             </tr>
             <?php
         }
-        $furtherCalculations = $grandTotal - $total_expenses; 
-        $afterDeduction = $grandTotal - $total_expenses;
+        $labourHandlingCharges = floor($netTotal / 100); // 1% of the net total
+        $furtherCalculations = $grandTotal - $total_expenses - $labourHandlingCharges; 
+        $afterDeduction = $grandTotal - $total_expenses - $labourHandlingCharges;
         ?>
         <input type="hidden" value="<?php echo $furtherCalculations; ?>" id="grandTotal" />
         <tr id="result_expenses" class="dontPrint">
             <td colspan="2" align="right"><a href="#" class="box_link" onclick="ajaxpage('bills/add_expense.php?bill_id=<?php echo $bill_id; ?>','lb_content'); open_lb('popup','popup_panel'); return false;">Add new expense</a></td>
+        </tr>
+        <tr>
+            <td class="fb">Handling Charges</td>
+            <td><span id="labour_handling_charges" labourHandlingCharges="<?php echo $labourHandlingCharges; ?>"><?php echo "Rs ".$labourHandlingCharges." /-"; ?></span></td>
         </tr>
 		<tr>
 			<td class="fb">Remaining Balance</td>
@@ -200,7 +205,7 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
     if (empty($f_bill['payed_to']))
     {
         ?>
-        <div class="cbo mt5">
+        <div class="cbo mt5 dontPrint">
             <a href="#" onclick="if ($(this).html() == 'Pay this bill') {$(this).html('Pay this bill (Canel)');} else {$(this).html('Pay this bill');} $('#payed_to_form').toggle(); $('#payed_to').css({'color':'#333'}); return false;" id="payed_to_button" class="box_link p0">Pay this bill</a>
             <span id="payed_to_form" class="dn">
                 <input type="text" value="" id="payed_to" style="margin-left:-5px" />
@@ -320,7 +325,7 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
 						$companyRecords = $company->select("name,town","company");
 						$companyName = $companyRecords[0]["name"];
 						$companyTown = $companyRecords[0]["town"];
-						echo $companyName." - ".$companyTown;
+						echo $companyName;
 						?>
                     </div>
                     
@@ -330,7 +335,7 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
                     </div>
                     <div class="p5 print_pad">
                     	<span class="fb">Village:</span> <?php echo $villageName; ?>
-                        <span class="fr"><span class="fb">Date: </span><?php echo $receivedDate; ?></span>
+                        <span class="fr"><span class="fb">Date: </span><?php echo date('d-m-Y', strtotime($receivedDate)); ?></span>
                     </div>
                     <div class="print_pad"></div>
                     <table cellpadding="2" class="bill_width">
