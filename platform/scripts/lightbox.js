@@ -59,13 +59,18 @@ function open_lb(overlay, popupBox, password, actionOnPassword)
 
 	if (password === true) {
 		authBox.style.display = "block";
-		var authListener = window.addEventListener('message', function (event) {
+
+		// hide lb_content's inner HTML
+		document.getElementById('lb_content').innerHTML = '';
+
+		var authListener = function (event) {
 			if (event.data.requester === 'ceo_here') {
 				actionOnPassword();
 				authBox.style.display = "none";
 			}
-			window.removeEventListener('message', authListener);
-		});
+			window.removeEventListener('message', authListener, false);
+		};
+		window.addEventListener('message', authListener);
 	} else {
 		authBox.style.display = "none";
 	}
