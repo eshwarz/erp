@@ -39,7 +39,7 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
 	$amaliFactor = $records[0]['amali'];
 	
 	$cash = ($cashFactor*$netTotal)/100;						//percentage
-	$commission = ($commissionFactor*$netTotal)/100;	      //percentage
+	$commission = round(($commissionFactor*$netTotal)/100);//percentage
 	$amali = $amaliFactor*$bagCount;							//per bag
 	
 	$deductions = $cash+$commission+$amali;
@@ -77,10 +77,16 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
     	<tr>
         	<td class="bcd fb" colspan="2" align="center">Deductions</td>
         </tr>
-    	<tr>
-			<td class="fb" align="right">Cash:</td>
-			<td><?php echo "Rs ".$cash." /-"; ?></td>
-		</tr>
+        <?php
+        if ((int) $cash !== 0) {
+            ?>
+            <tr>
+                <td class="fb" align="right">Cash:</td>
+                <td><?php echo "Rs ".$cash." /-"; ?></td>
+            </tr>
+            <?php
+        }
+        ?>
         <tr>
 			<td class="fb" align="right">Commission:</td>
 			<td><?php echo "Rs ".$commission." /-"; ?></td>
@@ -319,7 +325,7 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
                         ?>
                     </span>
                     <div></div>
-                    <div class="tc fb brd_b bcd p5 company_head" style="margin-top:-1px;">
+                    <div class="tc fb brd_b bcd p5 company_head" style="margin-top: -1px; display: none;">
                     	<?php
 						$company = new query;
 						$companyRecords = $company->select("name,town","company");
