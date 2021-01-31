@@ -2,7 +2,7 @@
 error_reporting(E_ERROR | E_PARSE);
 //if database already exists dont show the installation process
 $db = 'tamarind';
-if (mysql_select_db($db, mysql_connect('localhost','root','')))
+if (mysqli_select_db($db, mysqli_connect("localhost","thejbbiu_main","Lucky@2016")))
 {
     header('Location:already_installed.php');
 }

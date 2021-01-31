@@ -10,10 +10,10 @@ $sql_query = @fread(@fopen($dbms_schema, 'r'), @filesize($dbms_schema)) or die('
 $sql_query = remove_remarks($sql_query);
 $sql_query = split_sql_file($sql_query, ';');
 
-mysql_connect($host,$user,$pass) or die('error connection');
+mysqli_connect($host,$user,$pass) or die('error connection');
 
 //if database already exists dont show the installation process
-if (mysql_select_db($db, mysql_connect('localhost','root','')))
+if (mysqli_select_db($db, mysqli_connect('localhost','root','')))
 {
     header('Location:already_installed.php');
 }
@@ -27,7 +27,7 @@ if (!$create_db_result)
 }
 
 //selecting the database
-mysql_select_db($db) or die('error database selection');
+mysqli_select_db($db) or die('error database selection');
 
 $i=1;
 foreach($sql_query as $sql){

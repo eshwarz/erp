@@ -1,8 +1,8 @@
 <?php
-$con = mysql_connect("localhost","root","");
+$con = mysqli_connect("localhost","root","");
 if (!$con)
 {
 	die("Could not connect!");
 }
-mysql_select_db("project",$con);
+mysqli_select_db("project",$con);
 ?>
