@@ -1,9 +1,8 @@
 <?php
 error_reporting(E_ERROR | E_WARNING | E_PARSE);
-$con = mysqli_connect("localhost","thejbbiu_main","Lucky@2016");
-if (!$con)
+$con = mysqli_connect("localhost", "thejbbiu_main", "Lucky@2016", "thejbbiu_tamarind");
+if (mysqli_connect_errno())
 {
-	die("Could not connect!");
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+ 	exit();
 }
-mysqli_select_db("thejbbiu_tamarind",$con) or header('Location:install.php');
-?>
