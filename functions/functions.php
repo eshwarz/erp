@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ERROR | E_PARSE);
 include_once('../platform/query.php');
-include_once('../conn.php');
+include('../conn.php');
 
 function calculateDate ()
 {
