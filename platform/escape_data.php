@@ -7,6 +7,6 @@ function escape_data ($data)
 		$data = stripslashes($data);
 	}
 	$data = str_replace("\n","<br>",$data);
-	return mysql_real_escape_string(trim($data), $con);
+	return mysqli_real_escape_string($con, trim($data));
 }
 ?>
