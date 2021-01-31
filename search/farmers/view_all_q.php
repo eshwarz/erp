@@ -100,7 +100,7 @@ $dateNew; //keeping trak of previous date.
 $db = new query;
 $records = $db->select("date,farmer_id,lot_id","lots","farmer_id=".$farmerId,"time",1,0,1000);
 $num = "SELECT farmer_id FROM lots WHERE farmer_id=".$farmerId;
-$numResult = mysql_query($num);
+$numResult = mysqli_query($num);
 $count = mysql_num_rows($numResult);
 
 for ($m=0;$m<count($records);$m++)

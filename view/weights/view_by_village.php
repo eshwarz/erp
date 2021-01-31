@@ -43,12 +43,12 @@ for ($i=0;$i<count($villagesArray);$i++)
 	{
 		$auctions = "SELECT farmer_id FROM lots WHERE date='".$date."' AND pending=0";
 	}
-	$auctionsResult = mysql_query($auctions);
+	$auctionsResult = mysqli_query($auctions);
 	while ($auctionsRow = mysql_fetch_array($auctionsResult))
 	{
 		$farmerId = $auctionsRow["farmer_id"];
 		$getVillageId = "SELECT id,village_id FROM farmers WHERE id=".$farmerId;
-		$getVillageIdResult = mysql_query($getVillageId);
+		$getVillageIdResult = mysqli_query($getVillageId);
 		$getVillageIdRow = mysql_fetch_array($getVillageIdResult);
 		$villageId = $getVillageIdRow["village_id"];
 		
@@ -93,12 +93,12 @@ for ($i=0;$i<count($villagesArray);$i++)
       {
       	$auctions = "SELECT lot_id,farmer_id FROM lots WHERE date='".$date."' AND pending=0";
       }
-			$auctionsResult = mysql_query($auctions);
+			$auctionsResult = mysqli_query($auctions);
 			while ($auctionsRow = mysql_fetch_array($auctionsResult))
 			{
 				$farmerId = $auctionsRow["farmer_id"];
 				$getVillageId = "SELECT id,village_id FROM farmers WHERE id=".$farmerId;
-				$getVillageIdResult = mysql_query($getVillageId);
+				$getVillageIdResult = mysqli_query($getVillageId);
 				$getVillageIdRow = mysql_fetch_array($getVillageIdResult);
 				$villageId = $getVillageIdRow["village_id"];
 				

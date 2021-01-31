@@ -20,7 +20,7 @@ if (mysql_select_db($db, mysql_connect('localhost','root','')))
 
 //creating a database
 $create_db = 'CREATE DATABASE '.$db;
-$create_db_result = mysql_query($create_db);
+$create_db_result = mysqli_query($create_db);
 if (!$create_db_result)
 {
    die('Error creating database!');
@@ -32,7 +32,7 @@ mysql_select_db($db) or die('error database selection');
 $i=1;
 foreach($sql_query as $sql){
 //echo $i++;
-mysql_query($sql) or die('error in query');
+mysqli_query($sql) or die('error in query');
 }
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

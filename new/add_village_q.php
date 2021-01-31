@@ -5,7 +5,7 @@ $village = $_REQUEST['village'];
 if ($village == "Village name") $village = "";
 
 $checkVillage = "SELECT village FROM villages WHERE village='".$village."'";
-$checkVillageResult = mysql_query($checkVillage);
+$checkVillageResult = mysqli_query($checkVillage);
 
 $count = mysql_num_rows($checkVillageResult);
 if ($count<1)

@@ -25,7 +25,7 @@ if($fax == "Fax Number") $fax = "";
 if($tin == "Tin Number") $tin = "";
 
 $checkBuyer = "SELECT name FROM buyers WHERE name='".$buyer."'";
-$checkBuyerResult = mysql_query($checkBuyer);
+$checkBuyerResult = mysqli_query($checkBuyer);
 
 $count = mysql_num_rows($checkBuyerResult);
 if ($count<1)

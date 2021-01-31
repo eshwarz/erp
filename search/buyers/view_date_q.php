@@ -24,7 +24,7 @@ if (!empty($date))
 	// bill links condition goes here..
 	//script for deciding whether bill is prepared already or has to be prepared...
 	$bill_db = "SELECT id FROM buyer_bills WHERE date='".$date."' AND buyer_id=".$buyerId;
-	$bill_db_result = mysql_query($bill_db);
+	$bill_db_result = mysqli_query($bill_db);
 	$bill_db_count = mysql_num_rows($bill_db_result);
 
 	if ($bill_db_count == 0)

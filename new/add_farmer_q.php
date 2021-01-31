@@ -8,7 +8,7 @@ $village = $_REQUEST['village'];
 if ($farmer == "Farmer\'s name") $farmer = "";
 
 $checkFarmer = "SELECT name FROM farmers WHERE name='".$farmer."'";
-$checkFarmerResult = mysql_query($checkFarmer);
+$checkFarmerResult = mysqli_query($checkFarmer);
 
 $count = mysql_num_rows($checkFarmerResult);
 if ($count<1)

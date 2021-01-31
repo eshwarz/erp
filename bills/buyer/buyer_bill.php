@@ -89,7 +89,7 @@ if (!empty($date))
 						LEFT JOIN farmers AS f ON l.farmer_id = f.id
 						LEFT JOIN villages AS v ON f.village_id = v.id
 						WHERE l.buyer_id = {$buyerId} AND date = '{$date}'";
-		$result = mysql_query($sql);
+		$result = mysqli_query($sql);
 
 		$records = array();
 		while ($row = mysql_fetch_array($result)) {
