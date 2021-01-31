@@ -33,7 +33,7 @@ self_destruct();
 	<?php require_once("main_links/main_links.php"); ?>
     
     <?php
-	$company = new query;
+	$company = new query($con);
 	$companyRecords = $company->select("name,town","company");
 	$companyName = $companyRecords[0]["name"];
 	$companyTown = $companyRecords[0]["town"];

@@ -1,11 +1,14 @@
 <?php
-require_once('../conn.php');
 class query
 {
+	function __construct($con)
+	{
+		$this->con = $con;
+	}
 	function insert ($table_name,$fields,$values)
 	{
 		$sql = "INSERT INTO ".$table_name." (".$fields.") VALUES (".$values.")";
-		$result = mysqli_query($con, $sql);
+		$result = mysqli_query($this->con, $sql);
 		if (!$result)
 		{
 			die("Error in ( ".$sql." ): ".mysqli_connect_error());
@@ -15,7 +18,7 @@ class query
 	function delete ($table_name,$where)
 	{
 		$sql = "DELETE FROM ".$table_name." WHERE ".$where;
-		$result = mysqli_query($con, $sql);
+		$result = mysqli_query($this->con, $sql);
 		if (!$result)
 		{
 			die("Error in ( ".$sql." ): ".mysqli_connect_error());
@@ -39,7 +42,7 @@ class query
 				$set_values = $set_values.$exploded_fields[$m]."=".$exploded_values[$m];
 		}
 		$sql = "UPDATE ".$table_name.$set_values." WHERE ".$where;
-		$result = mysqli_query($con, $sql);
+		$result = mysqli_query($this->con, $sql);
 		if (!$result)
 		{
 			die("Error in ( ".$sql." ): ".mysqli_connect_error());
@@ -53,7 +56,7 @@ class query
 		if ($fields == '*')
 		{
 			$get_table = 'DESCRIBE '.$table_name;
-			$get_table_result = mysqli_query($con, $get_table);
+			$get_table_result = mysqli_query($this->con, $get_table);
 			while ($get_table_row = mysqli_fetch_array($get_table_result, MYSQLI_ASSOC))
 			{
 				$exploded_array[] = $get_table_row['Field'];
@@ -101,7 +104,7 @@ class query
 			}
 		}
 		
-		$result = mysqli_query($con, $sql);
+		$result = mysqli_query($this->con, $sql);
 		if (!$result)
 		{
 			die("Error in ( ".$sql." ): ".mysqli_connect_error());
@@ -121,7 +124,7 @@ class query
 	function unique_rows($field, $table)
 	{
 		$sql = "SELECT distinct({$field}) FROM {$table}";
-		$result = mysqli_query($con, $sql);
+		$result = mysqli_query($this->con, $sql);
 		$i = 0;
 		$record_array;
 		while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
