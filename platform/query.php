@@ -1,4 +1,5 @@
 <?php
+require_once('../platfrom/conn.php');
 class query
 {
 	function insert ($table_name,$fields,$values)
