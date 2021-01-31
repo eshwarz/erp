@@ -43,7 +43,7 @@ for ($i=0;$i<count($farmersArray);$i++)
 	{
 		$lots = "SELECT lot_id FROM lots WHERE date='".$date."' AND farmer_id=".$currentFarmer." AND pending=0";
 	}
-	$lotsResult = mysqli_query($con, ($lots);
+	$lotsResult = mysqli_query($con, $lots);
 	if (!$lotsResult)
 	{
 		die("ERR:".mysqli_connect_error());

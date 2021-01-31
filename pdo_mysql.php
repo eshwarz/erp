@@ -29,7 +29,7 @@
  * With the addition of an extended pdo_query() interface the cumbersome SQL
  * concatenation and easily forgotten escaping are obsolete:
  *
- *   mysqli_query($con, ("SELECT whatever FROM tbl WHERE id='$id' OR x=$x");
+ *   mysqli_query($con, "SELECT whatever FROM tbl WHERE id='$id' OR x=$x");
  *                                                      \       \
  * Becomes:                                               \      \
  *                                                          \     \
@@ -1265,7 +1265,7 @@ if (!function_exists("mysqli_query($con, ")) {
    function mysql_pconnect($hostname=NULL, $username=NULL, $password=NULL, $flags=NULL) { return pdo_pconnect(func_get_args()); }
    function mysql_close($link_identifier=NULL) { return pdo_close(func_get_args()); }
    function mysqli_select_db($database_name=NULL, $link_identifier=NULL) { return pdo_select_db(func_get_args()); }
-   function mysqli_query($con, ($query=NULL, $link_identifier=NULL) { return pdo_query(func_get_args()); }
+   function mysqli_query($con, $query=NULL, $link_identifier=NULL) { return pdo_query(func_get_args()); }
    function mysql_unbuffered_query($query=NULL, $link_identifier=NULL) { return pdo_unbuffered_query(func_get_args()); }
    function mysql_db_query($database_name=NULL, $query=NULL, $link_identifier=NULL) { return pdo_db_query(func_get_args()); }
    function mysql_list_dbs($link_identifier=NULL) { return pdo_list_dbs(func_get_args()); }

@@ -249,7 +249,7 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
             $db = new query;
             $records = $db->select("date,farmer_id,lot_id","lots","farmer_id=".$farmerId." AND date='".$receivedDate."' AND pending=0","time",1,0,1000);
             $num = "SELECT farmer_id FROM lots WHERE farmer_id=".$farmerId." AND pending=0";
-            $numResult = mysqli_query($con, ($num);
+            $numResult = mysqli_query($con, $num);
             $count = mysql_num_rows($numResult);
             
             for ($m=0;$m<count($records);$m++)

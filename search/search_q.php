@@ -8,7 +8,7 @@ $searchString = escape_data($_REQUEST['search']);
 $tabIndex = 100;
 
 $farmers = "SELECT * FROM farmers WHERE name LIKE '$searchString%' ORDER BY name LIMIT 0,5";
-$farmersResult = mysqli_query($con, ($farmers);
+$farmersResult = mysqli_query($con, $farmers);
 $farmersCount = mysql_num_rows($farmersResult);
 if ($farmersCount > 0)
 {
@@ -28,7 +28,7 @@ if ($farmersCount > 0)
 }
 
 $buyers = "SELECT * FROM buyers WHERE name LIKE '$searchString%' ORDER BY name LIMIT 0,5";
-$buyersResult = mysqli_query($con, ($buyers);
+$buyersResult = mysqli_query($con, $buyers);
 $buyersCount = mysql_num_rows($buyersResult);
 if ($buyersCount > 0)
 {
@@ -48,7 +48,7 @@ if ($buyersCount > 0)
 }
 
 $villages = "SELECT * FROM villages WHERE village LIKE '$searchString%' ORDER BY village LIMIT 0,5";
-$villagesResult = mysqli_query($con, ($villages);
+$villagesResult = mysqli_query($con, $villages);
 $villagesCount = mysql_num_rows($villagesResult);
 if ($villagesCount > 0)
 {

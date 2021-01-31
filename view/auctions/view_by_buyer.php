@@ -33,7 +33,7 @@ for ($i=0;$i<count($buyersArray);$i++)
 	$town = $buyerRecord[0]['town'];
 	
 	$auctions = "SELECT id FROM auction_list WHERE date='".$date."' AND buyer_id=".$currentBuyer;
-	$auctionsResult = mysqli_query($con, ($auctions);
+	$auctionsResult = mysqli_query($con, $auctions);
 	$count = mysql_num_rows($auctionsResult);
 	
 	if ($count>0)

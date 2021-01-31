@@ -4,7 +4,7 @@ require_once('conn.php');
 
 $dbname = 'tamarind';
 $sql = "SHOW TABLES FROM $dbname";
-$result = mysqli_query($con, ($sql);
+$result = mysqli_query($con, $sql);
 
 if (!$result) {
     echo "DB Error, could not list tables\n";
@@ -32,7 +32,7 @@ if ($_GET['table'])
 	echo "<b>".$table."</b><br/>";
 	echo "-----------------------------------------------------------------------";
 	echo "<br/>";
-	$result = mysqli_query($con, ("SHOW FIELDS FROM ".$table);
+	$result = mysqli_query($con, "SHOW FIELDS FROM ".$table);
 	while ($row = mysql_fetch_row($result))
 	{
     echo "{$row[0]}";
@@ -52,7 +52,7 @@ echo gettype($e);
 echo $br;
 
 $sql = "SELECT * FROM settings";
-$query = mysqli_query($con, ($sql);
+$query = mysqli_query($con, $sql);
 while ($row = mysqli_fetch_array($query))
 {
 	echo $br;
