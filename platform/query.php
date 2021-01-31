@@ -7,7 +7,7 @@ class query
 		$result = mysqli_query($sql);
 		if (!$result)
 		{
-			die("Error in ( ".$sql." ): ".mysql_error());
+			die("Error in ( ".$sql." ): ".mysqli_connect_error());
 		}
 	}
 	
@@ -17,7 +17,7 @@ class query
 		$result = mysqli_query($sql);
 		if (!$result)
 		{
-			die("Error in ( ".$sql." ): ".mysql_error());
+			die("Error in ( ".$sql." ): ".mysqli_connect_error());
 		}
 	}
 	
@@ -41,7 +41,7 @@ class query
 		$result = mysqli_query($sql);
 		if (!$result)
 		{
-			die("Error in ( ".$sql." ): ".mysql_error());
+			die("Error in ( ".$sql." ): ".mysqli_connect_error());
 		}
 		
 	}
@@ -103,7 +103,7 @@ class query
 		$result = mysqli_query($sql);
 		if (!$result)
 		{
-			die("Error in ( ".$sql." ): ".mysql_error());
+			die("Error in ( ".$sql." ): ".mysqli_connect_error());
 		}
 		$i = 0;
 		while ($row = mysql_fetch_array($result))

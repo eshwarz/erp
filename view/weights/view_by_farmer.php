@@ -46,7 +46,7 @@ for ($i=0;$i<count($farmersArray);$i++)
 	$lotsResult = mysqli_query($lots);
 	if (!$lotsResult)
 	{
-		die("ERR:".mysql_error());
+		die("ERR:".mysqli_connect_error());
 	}
 	$count = mysql_num_rows($lotsResult);
 	

@@ -8,7 +8,7 @@ $result = mysqli_query($sql);
 
 if (!$result) {
     echo "DB Error, could not list tables\n";
-    echo 'MySQL Error: ' . mysql_error();
+    echo 'MySQL Error: ' . mysqli_connect_error();
     exit;
 }
 echo "-----------------------------------------------------------------------";

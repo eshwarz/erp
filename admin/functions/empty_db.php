@@ -8,7 +8,7 @@ if ($id == "alwl")
 	$result = mysqli_query($sql);
 	if (!$result)
 	{
-		die("ERROR:".mysql_error());
+		die("ERROR:".mysqli_connect_error());
 	}
 
 	$sql = "DELETE FROM weights";

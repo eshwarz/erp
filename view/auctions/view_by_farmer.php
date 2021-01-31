@@ -39,7 +39,7 @@ for ($i=0;$i<count($farmersArray);$i++)
 	$auctionsResult = mysqli_query($auctions);
 	if (!$auctionsResult)
 	{
-		die("ERR:".mysql_error());
+		die("ERR:".mysqli_connect_error());
 	}
 	$count = mysql_num_rows($auctionsResult);
 	

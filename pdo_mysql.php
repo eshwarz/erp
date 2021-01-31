@@ -1272,7 +1272,7 @@ if (!function_exists("mysqli_query")) {
    function mysql_list_tables($database_name=NULL, $link_identifier=NULL) { return pdo_list_tables(func_get_args()); }
    function mysql_list_fields($database_name=NULL, $table_name=NULL, $link_identifier=NULL) { return pdo_list_fields(func_get_args()); }
    function mysql_list_processes($link_identifier=NULL) { return pdo_list_processes(func_get_args()); }
-   function mysql_error($link_identifier=NULL) { return pdo_error(func_get_args()); }
+   function mysqli_connect_error($link_identifier=NULL) { return pdo_error(func_get_args()); }
    function mysql_errno($link_identifier=NULL) { return pdo_errno(func_get_args()); }
    function mysql_affected_rows($link_identifier=NULL) { return pdo_affected_rows(func_get_args()); }
    function mysql_insert_id($link_identifier=NULL) { return pdo_insert_id(func_get_args()); }
