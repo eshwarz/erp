@@ -23,7 +23,7 @@ while ($row = mysqli_fetch_row($result)) {
 }
 echo "-----------------------------------------------------------------------";
 echo "<br/>";
-mysql_free_result($result);
+mysqli_free_result($result);
 if ($_GET['table'])
 {
 	echo "-----------------------------------------------------------------------";
