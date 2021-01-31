@@ -42,7 +42,7 @@ for ($i=0;$i<count($buyersArray);$i++)
 		$lots = "SELECT lot_id FROM lots WHERE date='".$date."' AND buyer_id=".$currentBuyer." AND pending=0";
 	}
 
-	$lotsResult = mysqli_query($lots);
+	$lotsResult = mysqli_query($con, ($lots);
 	if (!$lotsResult)
 	{
 		die("ERR:".mysqli_connect_error());

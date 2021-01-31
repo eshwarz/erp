@@ -103,7 +103,7 @@ if (!empty($receivedDate))
 	$db = new query;
 	$records = $db->select("date,farmer_id,lot_id","lots","farmer_id=".$farmerId." AND date='".$receivedDate."'","time",1,0,1000);
 	$num = "SELECT farmer_id FROM lots WHERE farmer_id=".$farmerId;
-	$numResult = mysqli_query($num);
+	$numResult = mysqli_query($con, ($num);
 	$count = mysql_num_rows($numResult);
 	
 	for ($m=0;$m<count($records);$m++)
@@ -137,7 +137,7 @@ if (!empty($receivedDate))
 			<?php
 			//script for deciding whether bill is prepared already or has to be prepared...
 			$bill_db = "SELECT id FROM farmer_bills WHERE date='".$receivedDate."' AND farmer_id=".$farmerId;
-			$bill_db_result = mysqli_query($bill_db);
+			$bill_db_result = mysqli_query($con, ($bill_db);
 			$bill_db_count = mysql_num_rows($bill_db_result);
 
 			if ($bill_db_count == 0)

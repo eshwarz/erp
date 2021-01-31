@@ -36,7 +36,7 @@ for ($i=0;$i<count($farmersArray);$i++)
 	
 	
 	$auctions = "SELECT id FROM auction_list WHERE date='".$date."' AND farmer_id=".$currentFarmer;
-	$auctionsResult = mysqli_query($auctions);
+	$auctionsResult = mysqli_query($con, ($auctions);
 	if (!$auctionsResult)
 	{
 		die("ERR:".mysqli_connect_error());

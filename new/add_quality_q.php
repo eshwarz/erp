@@ -6,7 +6,7 @@ $quality = escape_data($_REQUEST['quality']);
 if ($quality == "Quality") $quality = "";
 
 $checkQuality = "SELECT quality FROM quality WHERE quality='".$quality."'";
-$checkQualityResult = mysqli_query($checkQuality);
+$checkQualityResult = mysqli_query($con, ($checkQuality);
 
 $count = mysql_num_rows($checkQualityResult);
 if ($count<1)
