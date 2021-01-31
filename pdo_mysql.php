@@ -23,7 +23,7 @@
  *   pdo_connect       <-  mysqli_connect
  *   pdo_query         <-  mysqli_query
  *   pdo_result        <-  mysql_result
- *   pdo_fetch_array   <-  mysql_fetch_array
+ *   pdo_fetch_array   <-  mysqli_fetch_array
  *   pdo_escape_string <-  mysql_real_escape_string
  *
  * With the addition of an extended pdo_query() interface the cumbersome SQL
@@ -1280,7 +1280,7 @@ if (!function_exists("mysqli_query")) {
    function mysql_num_rows($result=NULL) { return pdo_num_rows(func_get_args()); }
    function mysql_num_fields($result=NULL) { return pdo_num_fields(func_get_args()); }
    function mysql_fetch_row($result=NULL) { return pdo_fetch_row(func_get_args()); }
-   function mysql_fetch_array($result=NULL, $result_type=NULL) { return pdo_fetch_array(func_get_args()); }
+   function mysqli_fetch_array($result=NULL, $result_type=NULL) { return pdo_fetch_array(func_get_args()); }
    function mysql_fetch_assoc($result=NULL) { return pdo_fetch_assoc(func_get_args()); }
    function mysql_fetch_object($result=NULL, $class_name=NULL, $ctor_params=NULL) { return pdo_fetch_object(func_get_args()); }
    function mysql_data_seek($result=NULL, $row_number=NULL) { return pdo_data_seek(func_get_args()); }

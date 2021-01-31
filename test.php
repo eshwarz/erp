@@ -53,7 +53,7 @@ echo $br;
 
 $sql = "SELECT * FROM settings";
 $query = mysqli_query($sql);
-while ($row = mysql_fetch_array($query))
+while ($row = mysqli_fetch_array($query))
 {
 	echo $br;
 	echo 'multiple_buyers: '.$row['multiple_buyers'].$br;
