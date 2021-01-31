@@ -8,7 +8,7 @@ if ($quality == "Quality") $quality = "";
 $checkQuality = "SELECT quality FROM quality WHERE quality='".$quality."'";
 $checkQualityResult = mysqli_query($con, $checkQuality);
 
-$count = mysql_num_rows($checkQualityResult);
+$count = mysqli_num_rows($checkQualityResult);
 if ($count<1)
 {
 	if ($quality == "")
@@ -19,7 +19,7 @@ if ($count<1)
 	}
 	else
 	{
-		$db = new query;
+		$db = new query($con);
 		$db->insert("quality","quality","'".$quality."'");
 		?>
 		<div class="tc bcc db wa p10"><?php echo ucwords($quality); ?> added!</div>

@@ -6,7 +6,7 @@ require_once('../platform/query.php');
 $quality_id = $_REQUEST['quality_id'];
 
 //retrieving the previous values of the field
-$db = new query;
+$db = new query($con);
 $record = $db->select('*','quality','id='.$quality_id);
 $all_qualities = $db->select('*','quality');
 for ($p=0;$p<count($all_qualities);$p++)

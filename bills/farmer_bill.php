@@ -10,16 +10,16 @@ $type = $_REQUEST['type'];
 //creating new bill entry in the farmer_bills in case of type == new
 if ($type == 'new')
 {
-    $bill_db = new query;
+    $bill_db = new query($con);
     $bill_db->insert('farmer_bills','farmer_id,date',"".$farmerId.",'".$receivedDate."'");
 }
 
-$getVillage = new query;
+$getVillage = new query($con);
 $getVillageRecord = $getVillage->select("village_id,name","farmers","id=".$farmerId);
 $villageId = $getVillageRecord[0]["village_id"];
 $farmerName = ucwords($getVillageRecord[0]["name"]);
 
-$db = new query;
+$db = new query($con);
 function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
 {
 	for ($m=0;$m<count($totalCostsArray);$m++)
@@ -31,7 +31,7 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
 		$bagCount = $bagCount+$bagsArray[$n];
 	}
 	//deductions.
-	$db = new query;
+	$db = new query($con);
 	$records = $db->select("cash,commission,amali","farmer_deductions");
 	
 	$cashFactor = $records[0]['cash'];
@@ -47,7 +47,7 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
 
     //getting the deductions from the database to insert them into the bill.
     
-    $bill_db = new query;
+    $bill_db = new query($con);
     $bill_records = $bill_db->select('id','farmer_bills',"farmer_id=$farmerId AND date='$date'");
     $bill_id = $bill_records[0]['id'];
     // $bill_advance = (int) $bill_records[0]['advance'];
@@ -55,11 +55,11 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
     // $bill_misc = (int) $bill_records[0]['misc'];
     // $deduction_amount = $bill_advance + $bill_freight + $bill_misc;
     
-    $expenses_db = new query;
+    $expenses_db = new query($con);
     $expenses_records = $expenses_db->select('id,description,money','farmer_expenses',"bill_id=$bill_id");
 
     //getting credit payments for particular bills.
-    $credit_db = new query;
+    $credit_db = new query($con);
     $credit_payment = $credit_db->select('*','farmer_credit_payments','bill_id='.$bill_id);
 	?>
     <table class="bill_width">
@@ -246,11 +246,11 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
             $totalBags;
             $date;
             $dateNew; //keeping trak of previous date.
-            $db = new query;
+            $db = new query($con);
             $records = $db->select("date,farmer_id,lot_id","lots","farmer_id=".$farmerId." AND date='".$receivedDate."' AND pending=0","time",1,0,1000);
             $num = "SELECT farmer_id FROM lots WHERE farmer_id=".$farmerId." AND pending=0";
             $numResult = mysqli_query($con, $num);
-            $count = mysql_num_rows($numResult);
+            $count = mysqli_num_rows($numResult);
             
             for ($m=0;$m<count($records);$m++)
             {
@@ -287,7 +287,7 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
                     </div>
                     <?php
                     //printing farmer's details.
-                    $getVillage = new query;
+                    $getVillage = new query($con);
                     $getVillageRecord = $getVillage->select("village_id,name","farmers","id=".$farmerId);
                     $villageId = $getVillageRecord[0]["village_id"];
                     $farmerName = ucwords($getVillageRecord[0]["name"]);
@@ -298,7 +298,7 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
                     ?>
                     
                     <?php
-                    $bill_db_dup = new query;
+                    $bill_db_dup = new query($con);
                     $bill_records = $bill_db_dup->select('id','farmer_bills',"farmer_id=$farmerId AND date='$date'");
                     $bill_id_dup = intval($bill_records[0]['id']);
                     $farmer_bill = farmer_bill($bill_id_dup);
@@ -327,7 +327,7 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
                     <div></div>
                     <div class="tc fb brd_b bcd p5 company_head" style="margin-top: -1px; display: none;">
                     	<?php
-						$company = new query;
+						$company = new query($con);
 						$companyRecords = $company->select("name,town","company");
 						$companyName = $companyRecords[0]["name"];
 						$companyTown = $companyRecords[0]["town"];
@@ -355,7 +355,7 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
                     </table>
                     <?php
                     
-                    $getFarmer = new query;
+                    $getFarmer = new query($con);
                     $farmerRecords = $getFarmer->select("farmer_id,buyer_id,lot_id,lot_number,cost,total_cost,quality,date","lots","farmer_id=".$farmerId." AND pending=0","date",0,0,1000);
                     for ($i=0;$i<count($farmerRecords);$i++)
                     {
@@ -380,18 +380,18 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
                             
                             //print the farmer transactions.
                             //buyer name
-                            $getBuyer = new query;
+                            $getBuyer = new query($con);
                             $getBuyerName = $getBuyer->select("name,short_name","buyers","id=".$buyerId);
                             $buyerName = ucwords($getBuyerName[0]["short_name"]);
                             
                             //quality
-                            $getQuality = new query;
+                            $getQuality = new query($con);
                             $getQualityName = $getQuality->select("quality","quality","id=".$qualityId);
                             $quality = $getQualityName[0]["quality"];
                             
                             //total weight.
                             $totalWeight;
-                            $getWeight = new query;
+                            $getWeight = new query($con);
                             $weights = $getWeight->select("weight","weights","lot_id=".$lotId);
                             $individualWeights;
                             

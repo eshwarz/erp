@@ -6,7 +6,7 @@ require_once("../../conn.php");
 require_once("../../platform/query.php");
 require_once("../../functions/functions.php");
 
-$buyerDetails = new query;
+$buyerDetails = new query($con);
 $buyerRecord = $buyerDetails->select("*","buyers","id=".$buyerId);
 
 if (!empty($date))
@@ -25,7 +25,7 @@ if (!empty($date))
 	//script for deciding whether bill is prepared already or has to be prepared...
 	$bill_db = "SELECT id FROM buyer_bills WHERE date='".$date."' AND buyer_id=".$buyerId;
 	$bill_db_result = mysqli_query($con, $bill_db);
-	$bill_db_count = mysql_num_rows($bill_db_result);
+	$bill_db_count = mysqli_num_rows($bill_db_result);
 
 	if ($bill_db_count == 0)
 	{
@@ -60,7 +60,7 @@ if (!empty($date))
 		<?php
 		$totalsArray;
 		$bagsArray;
-		$db = new query;
+		$db = new query($con);
 		if ($settings['multiple_buyers'] == 1)
 		{
 			$records = $db->select("*","lots,weights","weights.buyer_id=".$buyerId." AND lots.date='".$date."'");
@@ -79,7 +79,7 @@ if (!empty($date))
 			$bags = $records[$i]['lot_number'];
 			$weight = round(($records[$i]['total_cost']/$records[$i]['cost'])*100);
 			$cost = $records[$i]['cost'];
-			$dbCall = new query;
+			$dbCall = new query($con);
 			$record = $dbCall->select("quality","quality","id=".$records[$i]['quality']);
 			$quality = $record[0]['quality'];
 			$record = $dbCall->select("name","farmers","id=".$records[$i]['farmer_id']);
@@ -117,7 +117,7 @@ if (!empty($date))
 			<td><?php echo "Rs ".$netTotal." /-"; ?></td>
 		</tr>
 		<?php
-		$additions = new query;
+		$additions = new query($con);
 		$additionRecord = $additions->select("commission,loading,labour,	gumastha,bags,amc,rusum,gumastha_new","buyer_additions");
 		$commissionFactor = $additionRecord[0]['commission'];	//percentage
 		$loadingFactor = $additionRecord[0]['loading']	;				//per bag

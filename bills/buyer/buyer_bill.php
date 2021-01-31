@@ -7,15 +7,15 @@ require_once("../../platform/query.php");
 require_once("../../functions/functions.php");
 $type = $_REQUEST['type'];
 
-$buyerDetails = new query;
+$buyerDetails = new query($con);
 $buyerRecord = $buyerDetails->select("name,short_name,shop,town","buyers","id=".$buyerId);
 
 if ($type == "new")
 {
-	$db = new query;
+	$db = new query($con);
 	$db->insert('buyer_bills','buyer_id,date',"".$buyerId.",'".$date."'");
 }
-$db = new query;
+$db = new query($con);
 $get_bill_id = $db->select('*','buyer_bills',"buyer_id=".$buyerId." AND date='".$date."'");
 $bill_id = intval ($get_bill_id[0]['id']);
 
@@ -99,7 +99,7 @@ if (!empty($date))
 		$totalsArray;
 		$bagsArray;
 		$weightsArray;
-		// $db = new query;
+		// $db = new query($con);
 		// $records = $db->select("lot_id,quality,lot_number,farmer_id,cost,total_cost","lots","buyer_id=".$buyerId." AND date='".$date."'");
 		
 		for ($i=0;$i<count($records);$i++)
@@ -112,7 +112,7 @@ if (!empty($date))
 			$village = $records[$i]['village'];
 			$weightsArray[] = $weight = round(($records[$i]['total_cost']/$records[$i]['cost'])*100);
 			$cost = $records[$i]['cost'];
-			$dbCall = new query;
+			$dbCall = new query($con);
 			$record = $dbCall->select("quality","quality","id=".$records[$i]['quality']);
 			$quality = $record[0]['quality'];
 			$record = $dbCall->select("name","farmers","id=".$records[$i]['farmer_id']);
@@ -146,7 +146,7 @@ if (!empty($date))
 			<td align="right" class="last fb"><?php echo "Rs ".$netTotal." /-"; ?></td>
 		</tr>
 		<?php
-		$additions = new query;
+		$additions = new query($con);
 		$additionRecord = $additions->select("commission,loading,labour,	gumastha,bags,amc,rusum,gumastha_new","buyer_additions");
 		$commissionFactor = $additionRecord[0]['commission'];	//percentage
 		$loadingFactor = $additionRecord[0]['loading']	;				//per bag
@@ -240,7 +240,7 @@ if (!empty($date))
 		</tr>
 		<?php
 		// payments from the credit accounts.
-		$db = new query;
+		$db = new query($con);
 		$credit_usage = $db->select('*','buyer_credit_usage','bill_id='.$bill_id);
 		$after_deductions = $after_additions;
 		for ($p=0;$p<count($credit_usage);$p++)

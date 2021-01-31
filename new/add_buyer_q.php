@@ -27,7 +27,7 @@ if($tin == "Tin Number") $tin = "";
 $checkBuyer = "SELECT name FROM buyers WHERE name='".$buyer."'";
 $checkBuyerResult = mysqli_query($con, $checkBuyer);
 
-$count = mysql_num_rows($checkBuyerResult);
+$count = mysqli_num_rows($checkBuyerResult);
 if ($count<1)
 {
 	if ($buyer == "" || $shortName == "")
@@ -38,7 +38,7 @@ if ($count<1)
 	}
 	else
 	{
-		$db = new query;
+		$db = new query($con);
 		$db->insert("buyers","name,short_name,shop,street,town,phone,mobile,email,fax,tin","'".$buyer."','".$shortName."','".$shop."','".$street."','".$town."','".$phone."','".$mobile."','".$email."','".$fax."','".$tin."'");
 		?>
 		<div class="tc bcc db wa p10"><?php echo ucwords($buyer); ?> added!</div>

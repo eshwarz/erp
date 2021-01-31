@@ -7,7 +7,7 @@ $payed_to = $_REQUEST['payed_to'];
 $date = date('Y-m-d');
 if (!empty($payed_to) && !empty($bill_id))
 {
-	$db = new query;
+	$db = new query($con);
 	$db->update('farmer_bills','payed_to,payed_on',"'{$payed_to}','{$date}'", 'id='.$bill_id);
 	?>
 	<div align="center" class="brd_print print_pad success_notification tc" id="payed_bill" onmouseover="$('#print_button').hide();" onmouseout="$('#print_button').show();">

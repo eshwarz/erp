@@ -18,7 +18,7 @@ body{font-family:Verdana, Geneva, sans-serif;font-size:12px;color:#FFF;backgroun
 <body>
 
 <?php
-$db = new query;
+$db = new query($con);
 
 //$db->delete("posts","id=1");
 //$db->update("posts","name,post","'Mona Darls','how is its going on honey?'","id=4");

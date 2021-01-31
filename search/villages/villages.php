@@ -4,7 +4,7 @@ require("../../conn.php");
 require_once("../../platform/query.php");
 require_once("../../platform/escape_data.php");
 $villageId = $_REQUEST['villageId'];
-$db = new query;
+$db = new query($con);
 $villageRecord = $db->select("village","villages","id=".$villageId);
 ?>
 <div class="wa bce brd_b">
@@ -31,7 +31,7 @@ $villageRecord = $db->select("village","villages","id=".$villageId);
                             <option value="">Select Date</option>
                             <?php
                             $datesArray;
-                            $db = new query;
+                            $db = new query($con);
                             $records = $db->select("date","lots","farmer_id=".$farmerId,"date",0,0,1000);
                             
                             for ($i=0;$i<count($records);$i++)

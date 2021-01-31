@@ -12,7 +12,7 @@ $pending = $_REQUEST['pending'];
 <div class="tc fb">Results for buyer &quot;<?php echo $searchString; ?>&quot;</div>
 
 <?php
-$db = new query;
+$db = new query($con);
 $record = $db->select("name,id","buyers","name LIKE '%".$searchString."%'","name",0,0,5);
 
 //getting buyers array comprising of searchString in their name.
@@ -27,7 +27,7 @@ for ($i=0;$i<count($buyersArray);$i++)
 {
 	//get buyer details and print them.
 	$currentBuyer = $buyersArray[$i]; // iteration.
-	$buyerDb = new query;
+	$buyerDb = new query($con);
 	$buyerRecord = $buyerDb->select("name,short_name,town,email","buyers","id=".$buyersArray[$i]);
 	$buyerName = ucwords($buyerRecord[0]['name']);
 	$buyerShortName = ucwords($buyerRecord[0]['short_name']);
@@ -47,7 +47,7 @@ for ($i=0;$i<count($buyersArray);$i++)
 	{
 		die("ERR:".mysqli_connect_error());
 	}
-	$count = mysql_num_rows($lotsResult);
+	$count = mysqli_num_rows($lotsResult);
 	
 	
 	if ($count>0)
@@ -77,7 +77,7 @@ for ($i=0;$i<count($buyersArray);$i++)
 				<th>Edit/Delete</th>
 			</tr>
 			<?php
-			$lotsDb = new query;
+			$lotsDb = new query($con);
 			if ($pending == 1)
 			{
 				$records = $lotsDb->select("*","lots","date='".$date."' AND buyer_id=".$currentBuyer."  AND pending=1");
@@ -89,22 +89,22 @@ for ($i=0;$i<count($buyersArray);$i++)
 			
 			for ($j=0;$j<count($records);$j++)
 			{
-				$quality = new query;
+				$quality = new query($con);
 				$qualityRecord = $quality->select("quality","quality","id=".$records[$j]['quality']);
 				$qualityName = $qualityRecord[0]['quality'];
 				
-				$farmer = new query;
+				$farmer = new query($con);
 				$farmerRecord = $farmer->select("name,village_id","farmers","id=".$records[$j]['farmer_id']);
 				$farmerName = ucwords($farmerRecord[0]['name']);
 				$villageId = $farmerRecord[0]['village_id'];
 				
-				$village = new query;
+				$village = new query($con);
 				$villageRecord = $village->select("village","villages","id=".$villageId);
 				$villageName = $villageRecord[0]['village'];
 
 				//total weight and individual weights
 				$totalWeight = 0;
-				$getWeight = new query;
+				$getWeight = new query($con);
 				$weights = $getWeight->select("*","weights","lot_id=".$records[$j]['lot_id']);
 				$individualWeights;
 				

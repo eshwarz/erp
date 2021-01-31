@@ -14,7 +14,7 @@ require_once("../platform/query.php");
                     <!--Database call-->
                     <?php
                     $datesArray;
-					$db = new query;
+					$db = new query($con);
                     $records = $db->select("buyer_id,date","lots","buyer_id=".$buyerId,"date",0,0,1000);
 					
                     for ($i=0;$i<count($records);$i++)

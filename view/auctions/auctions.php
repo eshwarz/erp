@@ -8,7 +8,7 @@ require_once("../../platform/escape_data.php");
 require_once("../../functions/functions.php");
 require_once("auctionSearch.php");
 $settings = settings();
-$db = new query;
+$db = new query($con);
 $records = $db->select("*","auction_list","date='".$date."'");
 
 if (!empty($date))
@@ -47,20 +47,20 @@ if (!empty($date))
 			<?php
 			for ($i=0;$i<count($records);$i++)
 			{
-				$farmer = new query;
+				$farmer = new query($con);
 				$farmerRecord = $farmer->select("name,village_id","farmers","id=".$records[$i]['farmer_id']);
 				$farmerName = ucwords($farmerRecord[0]['name']);
 				$villageId = $farmerRecord[0]['village_id'];
 				
-				$village = new query;
+				$village = new query($con);
 				$villageRecord = $farmer->select("village","villages","id=".$villageId);
 				$villageName = ucwords($villageRecord[0]['village']);
 				
-				$quality = new query;
+				$quality = new query($con);
 				$qualityRecord = $farmer->select("quality","quality","id=".$records[$i]['quality']);
 				$qualityName = $qualityRecord[0]['quality'];
 				
-				$buyer = new query;
+				$buyer = new query($con);
 				$buyerRecord = $buyer->select("name","buyers","id=".$records[$i]['buyer_id']);
 				$buyerName = ucwords($buyerRecord[0]['name']);
 				?>

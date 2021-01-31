@@ -4,7 +4,7 @@ require_once("../conn.php");
 require_once("../platform/query.php");
 require_once("../platform/helpers/content_helper.php");
 $deleted = $_GET['deleted'];
-$db = new query;
+$db = new query($con);
 $company = $db->select("name","company");
 $company_name = $company[0]["name"];
 ?>

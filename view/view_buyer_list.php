@@ -32,7 +32,7 @@ require("../platform/query.php");
                         	<option value="">Select Buyer</option>
                             <!--Database call-->
                             <?php
-							$db = new query;
+							$db = new query($con);
 							$records = $db->select("id,name,short_name","buyers");
 							for ($i=0;$i<count($records);$i++)
 							{

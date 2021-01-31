@@ -14,7 +14,7 @@ $buyer_id = $_REQUEST['buyer_id'];
 $cost = $_REQUEST['cost'];
 $lot_number = $_REQUEST['lot_number'];
 $serial = escape_data(strval($_REQUEST['serial']));
-$db = new query;
+$db = new query($con);
 $deduction = $db->select('*','weight_deduction');
 $weight_deduction = $deduction[0]['weight_deduction'];
 
@@ -44,7 +44,7 @@ if ($cost != "Cost")
 	$total_weight = array_sum($bags);
 	$total_cost = $total_weight*($cost/100);
 
-	$db = new query;
+	$db = new query($con);
 
 	if ($settings['multiple_buyers'] == 1)
 	{
@@ -94,7 +94,7 @@ if ($cost != "Cost")
 
 if ($settings['multiple_buyers'] == 1)
 {
-	$getWeight = new query;
+	$getWeight = new query($con);
 	$weights = $getWeight->select("*","weights","lot_id=".$id);
 	for ($p=0;$p<count($weights);$p++)
 	{

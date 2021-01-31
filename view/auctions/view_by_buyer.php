@@ -11,7 +11,7 @@ $date = $_REQUEST['auctionSearchDate'];
 <div class="tc fb">Results for Buyer &quot;<?php echo $searchString; ?>&quot;</div>
 
 <?php
-$db = new query;
+$db = new query($con);
 $record = $db->select("name,id","buyers","name LIKE '%".$searchString."%'","name",0,0,5);
 
 //getting buyers array comprising of searchString in their name.
@@ -26,7 +26,7 @@ for ($i=0;$i<count($buyersArray);$i++)
 {
 	//get buyer details and print them.
 	$currentBuyer = $buyersArray[$i]; // iteration.
-	$buyerDb = new query;
+	$buyerDb = new query($con);
 	$buyerRecord = $buyerDb->select("name,short_name,town,email","buyers","id=".$buyersArray[$i]);
 	$buyerName = ucwords($buyerRecord[0]['name']);
 	$buyerShortName = ucwords($buyerRecord[0]['short_name']);
@@ -34,7 +34,7 @@ for ($i=0;$i<count($buyersArray);$i++)
 	
 	$auctions = "SELECT id FROM auction_list WHERE date='".$date."' AND buyer_id=".$currentBuyer;
 	$auctionsResult = mysqli_query($con, $auctions);
-	$count = mysql_num_rows($auctionsResult);
+	$count = mysqli_num_rows($auctionsResult);
 	
 	if ($count>0)
 	{
@@ -58,20 +58,20 @@ for ($i=0;$i<count($buyersArray);$i++)
 				<th>Edit/Delete</th>
 			</tr>
 			<?php
-			$auctionsDb = new query;
+			$auctionsDb = new query($con);
 			$records = $auctionsDb->select("*","auction_list","date='".$date."' AND buyer_id=".$currentBuyer);
 			for ($j=0;$j<count($records);$j++)
 			{
-				$quality = new query;
+				$quality = new query($con);
 				$qualityRecord = $quality->select("quality","quality","id=".$records[$j]['quality']);
 				$qualityName = $qualityRecord[0]['quality'];
 				
-				$farmer = new query;
+				$farmer = new query($con);
 				$farmerRecord = $farmer->select("name,village_id","farmers","id=".$records[$j]['farmer_id']);
 				$farmerName = ucwords($farmerRecord[0]['name']);
 				$villageId = $farmerRecord[0]['village_id'];
 				
-				$village = new query;
+				$village = new query($con);
 				$villageRecord = $village->select("village","villages","id=".$villageId);
 				$villageName = $villageRecord[0]['village'];
 				?>

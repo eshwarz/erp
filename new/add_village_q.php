@@ -7,7 +7,7 @@ if ($village == "Village name") $village = "";
 $checkVillage = "SELECT village FROM villages WHERE village='".$village."'";
 $checkVillageResult = mysqli_query($con, $checkVillage);
 
-$count = mysql_num_rows($checkVillageResult);
+$count = mysqli_num_rows($checkVillageResult);
 if ($count<1)
 {
 	if ($village == "")
@@ -18,7 +18,7 @@ if ($count<1)
 	}
 	else
 	{		
-		$db = new query;
+		$db = new query($con);
 		$db->insert("villages","village","'".$village."'");
 		?>
 		<div class="tc bcc db wa p10"><?php echo ucwords($village); ?> added!</div>

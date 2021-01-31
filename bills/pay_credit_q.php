@@ -11,18 +11,18 @@ if (!empty($credit))
 {
 	//inserting into the farmer_credit_payments table.
 	$payment_date = date('Y-m-d');
-	$db = new query;
+	$db = new query($con);
 	$db->insert('farmer_credit_payments','farmer_id,bill_id,credit,date',"$farmer_id,$bill_id,$credit,'$payment_date'");
 	$credit_payment = $db->select('id','farmer_credit_payments',"bill_id=".$bill_id." AND credit=".$credit." AND date='$payment_date'",'date',1,0,1);
 	
 	//counting 
-	$get_db = new query;
+	$get_db = new query($con);
 	$get_db_record = $get_db->select('credit','farmer_accounts','farmer_id='.$farmer_id);
 	
 	if (count($get_db_record) == 0)
 	{
 		//inserting into the accounts (opening new account for the farmer) .
-		$db = new query;
+		$db = new query($con);
 		$db->insert('farmer_accounts','farmer_id,credit',"$farmer_id,-$credit");
 	}
 	else
@@ -30,7 +30,7 @@ if (!empty($credit))
 		//updating the existing farmer account.
 		$old_credit = $get_db_record[0]['credit'];
 		$new_credit = $old_credit - $credit;
-		$db = new query;
+		$db = new query($con);
 		$db->update('farmer_accounts','credit',$new_credit,'farmer_id='.$farmer_id);
 	}
 

@@ -6,7 +6,7 @@ require_once('../platform/query.php');
 $village_id = $_REQUEST['village_id'];
 
 //retrieving the previous values of the field
-$db = new query;
+$db = new query($con);
 $record = $db->select('*','villages','id='.$village_id);
 ?>
 <div class="lb_header">Edit Village</div>

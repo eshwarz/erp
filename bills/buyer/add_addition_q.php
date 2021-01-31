@@ -9,9 +9,9 @@ $description = escape_data($_REQUEST['description']);
 $money = $_REQUEST['money'];
 if (!empty($description) && !empty($money))
 {
-	$db = new query;
+	$db = new query($con);
 	$db->insert ("buyer_expenses","bill_id,description,money","$bill_id,'$description',$money");
-	$get_db = new query;
+	$get_db = new query($con);
 	$get_db_record = $get_db->select('id','buyer_expenses',"description='$description' AND bill_id=$bill_id");
 	?>
 	<tr class="hidden_link" id="remove_addition_<?php echo $get_db_record[0]['id']; ?>">

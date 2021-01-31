@@ -27,7 +27,7 @@ else
 {
 	if (empty($farmerId))//newFarmerModule
 	{
-		$db = new query;
+		$db = new query($con);
 		$db->insert("farmers","village_id,name","".$village.",'".$farmerName."'");
 		$record = $db->select("id","farmers","name='".$farmerName."'");
 		$farmerId = $record[0]['id'];	
@@ -50,7 +50,7 @@ else
 		}
 	}
 
-	$dbcall = new query;
+	$dbcall = new query($con);
 	if ($pending_flag == 0)
 	{
 		$dbcall->insert("lots","serial,lot_number,quality,farmer_id,buyer_id,cost,date","'".$serialNumber."',".$lotNumber.",".$quality.",".$farmerId.",".$buyer.",".$cost.",'".$date."'");
@@ -67,7 +67,7 @@ else
 	$totalWeight = 0;
 
 	//getting weight deduction.
-	$db_deduction = new query;
+	$db_deduction = new query($con);
 	$record = $db_deduction->select('*','weight_deduction');
 	$deduction = $record[0]['weight_deduction'];
 

@@ -1277,7 +1277,7 @@ if (!function_exists("mysqli_query($con, ")) {
    function mysql_affected_rows($link_identifier=NULL) { return pdo_affected_rows(func_get_args()); }
    function mysql_insert_id($link_identifier=NULL) { return pdo_insert_id(func_get_args()); }
    function mysql_result($result=NULL, $row=NULL, $field=NULL) { return pdo_result(func_get_args()); }
-   function mysql_num_rows($result=NULL) { return pdo_num_rows(func_get_args()); }
+   function mysqli_num_rows($result=NULL) { return pdo_num_rows(func_get_args()); }
    function mysql_num_fields($result=NULL) { return pdo_num_fields(func_get_args()); }
    function mysqli_fetch_row($result=NULL) { return pdo_fetch_row(func_get_args()); }
    function mysqli_fetch_array($result=NULL, $result_type=NULL) { return pdo_fetch_array(func_get_args()); }

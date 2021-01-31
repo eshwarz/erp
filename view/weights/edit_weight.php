@@ -10,7 +10,7 @@ $settings = settings();
 <div class="lb_header">Edit Weight List</div>
 <div class="lb_message">
 	<?php
-	$db = new query;
+	$db = new query($con);
 	$records = $db->select('*','lots','lot_id='.$id);
 	$lots = $db->select('*','weights','lot_id='.$id);
 	$deduction = $db->select('*','weight_deduction');

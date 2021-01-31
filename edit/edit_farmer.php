@@ -6,7 +6,7 @@ require_once('../platform/query.php');
 $farmer_id = $_REQUEST['farmer_id'];
 
 //retrieving the previous values of the field
-$db = new query;
+$db = new query($con);
 $record = $db->select('*','farmers','id='.$farmer_id);
 $record_village = $db->select('*','villages','id='.$record[0]['village_id']);
 $village_name = $record_village[0]['village'];

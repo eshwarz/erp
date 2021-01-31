@@ -6,7 +6,7 @@ require_once("../../platform/escape_data.php");
 require_once("../../functions/functions.php");
 $settings = settings();
 $buyerId = $_REQUEST['buyerId'];
-$db = new query;
+$db = new query($con);
 $record = $db->select("name,town","buyers","id=".$buyerId);
 ?>
 <div class="wa bce brd_b">
@@ -32,7 +32,7 @@ $record = $db->select("name,town","buyers","id=".$buyerId);
                             <option value="">Select Date</option>
                             <?php
                             $datesArray;
-                            $db = new query;
+                            $db = new query($con);
                             if ($settings['multiple_buyers'] == 1)
                             {    
                                 $records = $db->select("*","lots,weights","weights.buyer_id=".$buyerId,"date",0,0,1000);

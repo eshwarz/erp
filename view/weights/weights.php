@@ -9,7 +9,7 @@ require_once("../../functions/functions.php");
 require_once("weightSearch.php");
 $settings = settings();
 $pending = $_REQUEST['pending'];
-$db = new query;
+$db = new query($con);
 
 if ($pending == 1)
 {
@@ -54,22 +54,22 @@ if (!empty($date))
 			<?php
 			for ($i=0;$i<count($records);$i++)
 			{
-				$farmer = new query;
+				$farmer = new query($con);
 				$farmerRecord = $farmer->select("name,village_id","farmers","id=".$records[$i]['farmer_id']);
 				$farmerName = ucwords($farmerRecord[0]['name']);
 				$villageId = $farmerRecord[0]['village_id'];
 				
-				$village = new query;
+				$village = new query($con);
 				$villageRecord = $farmer->select("village","villages","id=".$villageId);
 				$villageName = ucwords($villageRecord[0]['village']);
 				
-				$quality = new query;
+				$quality = new query($con);
 				$qualityRecord = $farmer->select("quality","quality","id=".$records[$i]['quality']);
 				$qualityName = $qualityRecord[0]['quality'];
 				
 				if($records[$i]['buyer_id'] != 0)
 				{
-					$buyer = new query;
+					$buyer = new query($con);
 					$buyerRecord = $buyer->select("name","buyers","id=".$records[$i]['buyer_id']);
 					$buyerName = ucwords($buyerRecord[0]['name']);
 				}
@@ -79,7 +79,7 @@ if (!empty($date))
 				}
 				//total weight and individual weights (individual buyers in case)
 				$totalWeight = 0;
-				$getWeight = new query;
+				$getWeight = new query($con);
 				$weights = $getWeight->select("*","weights","lot_id=".$records[$i]['lot_id']);
 				$individualWeights;
 				for ($j=0;$j<count($weights);$j++)

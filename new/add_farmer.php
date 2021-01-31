@@ -19,7 +19,7 @@ require_once("../platform/query.php");
                     	<select name="village" id="village">
                         	<option value="">Select Anyone</option>
                             <?php
-                            $db = new query;
+                            $db = new query($con);
 							$recordArray = $db->select("id,village","villages","","village",0,0,1000);
 							for ($m=0;$m<count($recordArray);$m++)
 							{

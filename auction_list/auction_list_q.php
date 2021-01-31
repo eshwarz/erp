@@ -25,7 +25,7 @@ else
 {
 	if (empty($farmerId))//newFarmerModule
 	{
-		$db = new query;
+		$db = new query($con);
 		$db->insert("farmers","village_id,name","".$village.",'".$farmerName."'");
 		$record = $db->select("id","farmers","name='".$farmerName."'");
 		$farmerId = $record[0]['id'];
@@ -37,7 +37,7 @@ else
 	if ($serialNumber == 'Serial Number')
 		$serialNumber = 0;
 		
-	$dbcall = new query;
+	$dbcall = new query($con);
 	$dbcall->insert("auction_list","serial,lot_number,quality,farmer_id,buyer_id,cost,date","'".$serialNumber."',".$lotNumber.",".$quality.",".$farmerId.",".$buyer.",".$cost.",'".$date."'");
 		
 	?>

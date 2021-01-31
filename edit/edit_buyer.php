@@ -9,7 +9,7 @@ $buyer_id = $_REQUEST['buyer_id'];
 //retrieving the previous values of the field
 $fields = get_fields('buyers');
 $imploded_fields = implode(',',$fields);
-$db = new query;
+$db = new query($con);
 $record = $db->select('*','buyers','id='.$buyer_id);
 ?>
 <div class="lb_header">Edit Buyer</div>

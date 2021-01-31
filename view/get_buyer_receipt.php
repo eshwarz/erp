@@ -5,7 +5,7 @@ $date = $_REQUEST['date'];
 require_once("../conn.php");
 require_once("../platform/query.php");
 
-$buyerDetails = new query;
+$buyerDetails = new query($con);
 $buyerRecord = $buyerDetails->select("name,short_name,shop,town","buyers","id=".$buyerId);
 
 if (!empty($date))
@@ -27,7 +27,7 @@ if (!empty($date))
 		<?php
 		$totalsArray;
 		$bagsArray;
-		$db = new query;
+		$db = new query($con);
 		$records = $db->select("lot_id,quality,lot_number,farmer_id,cost,total_cost","lots","buyer_id=".$buyerId." AND date='".$date."'");
 		
 		for ($i=0;$i<count($records);$i++)
@@ -39,7 +39,7 @@ if (!empty($date))
 			$bags = $records[$i]['lot_number'];
 			$weight = ($records[$i]['total_cost']/$records[$i]['cost'])*100;
 			$cost = $records[$i]['cost'];
-			$dbCall = new query;
+			$dbCall = new query($con);
 			$record = $dbCall->select("quality","quality","id=".$records[$i]['quality']);
 			$quality = $record[0]['quality'];
 			$record = $dbCall->select("name","farmers","id=".$records[$i]['farmer_id']);
@@ -77,7 +77,7 @@ if (!empty($date))
 			<td></td>
 		</tr>
 		<?php
-		$additions = new query;
+		$additions = new query($con);
 		$additionRecord = $additions->select("commission,loading,labour,	gumastha,bags,amc,rusum,gumastha_new","buyer_additions");
 		$commissionFactor = $additionRecord[0]['commission'];	//percentage
 		$loadingFactor = $additionRecord[0]['loading']	;				//per bag

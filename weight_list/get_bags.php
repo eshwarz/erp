@@ -27,7 +27,7 @@ for ($m=1;$m<=$bags;$m++)
                 <select name="buyer<?php echo $m; ?>" id="buyer<?php echo $m; ?>" style="width:100px;margin-left:-1px;">
                     <option value="">Buyer</option>
                     <?php
-                    $db = new query;
+                    $db = new query($con);
                     $records = $db->select("id,name","buyers","","name",0,0,1000);
                     for ($p=0;$p<count($records);$p++)
                     {

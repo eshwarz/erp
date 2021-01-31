@@ -27,7 +27,7 @@ function calculateTotals ($bagsArray,$totalCostsArray)
 		$bagCount = $bagCount+$bagsArray[$n];
 	}
 	//deductions.
-	$db = new query;
+	$db = new query($con);
 	$records = $db->select("cash,commission,amali","farmer_deductions");
 	
 	$cashFactor = $records[0]['cash'];
@@ -110,7 +110,7 @@ function calculateTotals ($bagsArray,$totalCostsArray)
 		//last farmer check
 		$lastFarmerId;
 		
-		$db = new query;
+		$db = new query($con);
 		$records = $db->select("date,farmer_id,lot_id","lots","","date",1,0,1000);
 		
 		for ($m=0;$m<count($records);$m++)
@@ -154,7 +154,7 @@ function calculateTotals ($bagsArray,$totalCostsArray)
 				//div for center push.
 				echo "<div class='ma' style='width:500px;'>";
 				//printing farmer's details.
-				$getVillage = new query;
+				$getVillage = new query($con);
 				$getVillageRecord = $getVillage->select("village_id,name","farmers","id=".$farmerId);
 				$villageId = $getVillageRecord[0]["village_id"];
 				$farmerName = ucwords($getVillageRecord[0]["name"]);
@@ -175,7 +175,7 @@ function calculateTotals ($bagsArray,$totalCostsArray)
                 </table>
 				<?php
 				
-				$getFarmer = new query;
+				$getFarmer = new query($con);
 				$farmerRecords = $getFarmer->select("farmer_id,buyer_id,lot_id,lot_number,cost,total_cost,quality,date","lots","farmer_id=".$farmerId,"date",0,0,1000);
 				for ($i=0;$i<count($farmerRecords);$i++)
 				{
@@ -206,18 +206,18 @@ function calculateTotals ($bagsArray,$totalCostsArray)
 						
 						//print the farmer transactions.
 						//buyer name
-						$getBuyer = new query;
+						$getBuyer = new query($con);
 						$getBuyerName = $getBuyer->select("name,short_name","buyers","id=".$buyerId);
 						$buyerName = ucwords($getBuyerName[0]["short_name"]);
 						
 						//quality
-						$getQuality = new query;
+						$getQuality = new query($con);
 						$getQualityName = $getQuality->select("quality","quality","id=".$qualityId);
 						$quality = $getQualityName[0]["quality"];
 						
 						//total weight.
 						$totalWeight;
-						$getWeight = new query;
+						$getWeight = new query($con);
 						$weights = $getWeight->select("weight","weights","lot_id=".$lotId);
 						$individualWeights;
 						

@@ -11,7 +11,7 @@ $date = $_REQUEST['auctionSearchDate'];
 <div class="tc fb">Results for farmer &quot;<?php echo $searchString; ?>&quot;</div>
 
 <?php
-$db = new query;
+$db = new query($con);
 $record = $db->select("name,id","farmers","name LIKE '%".$searchString."%'","name",0,0,5);
 
 //getting farmers array comprising of searchString in their name.
@@ -26,7 +26,7 @@ for ($i=0;$i<count($farmersArray);$i++)
 {
 	//get farmer details and print them.
 	$currentFarmer = $farmersArray[$i]; // iteration.
-	$farmerDb = new query;
+	$farmerDb = new query($con);
 	$farmerRecord = $farmerDb->select("name,village_id","farmers","id=".$farmersArray[$i]);
 	$farmerName = ucwords($farmerRecord[0]['name']);
 	$villageId = $farmerRecord[0]['village_id'];
@@ -41,7 +41,7 @@ for ($i=0;$i<count($farmersArray);$i++)
 	{
 		die("ERR:".mysqli_connect_error());
 	}
-	$count = mysql_num_rows($auctionsResult);
+	$count = mysqli_num_rows($auctionsResult);
 	
 	
 	if ($count>0)
@@ -66,15 +66,15 @@ for ($i=0;$i<count($farmersArray);$i++)
 				<th>Edit/Delete</th>
 			</tr>
 			<?php
-			$auctionsDb = new query;
+			$auctionsDb = new query($con);
 			$records = $auctionsDb->select("*","auction_list","date='".$date."' AND farmer_id=".$currentFarmer);
 			for ($j=0;$j<count($records);$j++)
 			{
-				$quality = new query;
+				$quality = new query($con);
 				$qualityRecord = $quality->select("quality","quality","id=".$records[$j]['quality']);
 				$qualityName = $qualityRecord[0]['quality'];
 				
-				$buyer = new query;
+				$buyer = new query($con);
 				$buyerRecord = $buyer->select("name","buyers","id=".$records[$j]['buyer_id']);
 				$buyerName = ucwords($buyerRecord[0]['name']);
 				

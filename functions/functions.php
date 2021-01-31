@@ -155,28 +155,28 @@ function get_village_by_farmer_id ($farmer_id)
 
 function company_details()
 {
-	$company = new query;
+	$company = new query($con);
 	$records = $company->select('*','company');
 	return $records[0];
 }
 
 function buyer_details($id)
 {
-	$db = new query;
+	$db = new query($con);
 	$records = $db->select('*','buyers','id='.$id);
 	return $records[0];
 }
 
 function settings()
 {
-	$db = new query;
+	$db = new query($con);
 	$records = $db->select('*','settings');
 	return $records[0];
 }
 
 function farmer_bill($id)
 {
-	$db = new query;
+	$db = new query($con);
 	$records = $db->select('*','farmer_bills','id='.$id);
 	return $records[0];
 }

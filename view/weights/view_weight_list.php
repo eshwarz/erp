@@ -32,7 +32,7 @@ $pending = $_REQUEST['pending'];
                         	<option value="">Select Date</option>
                             <?php
 							$datesArray;
-							$db = new query;
+							$db = new query($con);
                             $records = $db->unique_rows('date', 'lots');
                             for ($i = 0; $i < count($records); $i++) {
                                 $date = $records[$i]['date'];

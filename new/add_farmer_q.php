@@ -10,7 +10,7 @@ if ($farmer == "Farmer\'s name") $farmer = "";
 $checkFarmer = "SELECT name FROM farmers WHERE name='".$farmer."'";
 $checkFarmerResult = mysqli_query($con, $checkFarmer);
 
-$count = mysql_num_rows($checkFarmerResult);
+$count = mysqli_num_rows($checkFarmerResult);
 if ($count<1)
 {
 	if ($farmer == "" || $village == "")
@@ -21,7 +21,7 @@ if ($count<1)
 	}
 	else
 	{
-		$db = new query;
+		$db = new query($con);
 		$db->insert("farmers","village_id,name","".$village.",'".$farmer."'");
 		?>
 		<div class="tc bcc db wa p10"><?php echo ucwords($farmer); ?> added!</div>

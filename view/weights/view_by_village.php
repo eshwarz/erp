@@ -12,7 +12,7 @@ $pending = $_REQUEST['pending'];
 <div class="tc fb">Results for village &quot;<?php echo $searchString; ?>&quot;</div>
 
 <?php
-$db = new query;
+$db = new query($con);
 $record = $db->select("village,id","villages","village LIKE '%".$searchString."%'","village",0,0,5);
 
 //getting villages array comprising of searchString in their name.
@@ -29,7 +29,7 @@ for ($i=0;$i<count($villagesArray);$i++)
 {
 	//get village details and print them.
 	$currentVillageId = $villagesArray[$i];
-	$villageDb = new query;
+	$villageDb = new query($con);
 	$villageRecord = $villageDb->select("village,id","villages","id=".$currentVillageId);
 	$villageName = ucwords($villageRecord[0]['village']);
 	
@@ -105,25 +105,25 @@ for ($i=0;$i<count($villagesArray);$i++)
 				if ($villageId == $currentVillageId)
 				{
 					$currentAuction = $auctionsRow["lot_id"];
-					$auctionDb = new query;
+					$auctionDb = new query($con);
 					$auctionRecord = $auctionDb->select("*","lots","lot_id=".$currentAuction);
 					for ($k=0;$k<count($auctionRecord);$k++)
 					{
-						$quality = new query;
+						$quality = new query($con);
 						$qualityRecord = $quality->select("quality","quality","id=".$auctionRecord[$k]['quality']);
 						$qualityName = $qualityRecord[0]['quality'];
 						
-						$farmer = new query;
+						$farmer = new query($con);
 						$farmerRecord = $farmer->select("name","farmers","id=".$auctionRecord[$k]['farmer_id']);
 						$farmerName = ucwords($farmerRecord[0]['name']);
 						
-						$buyer = new query;
+						$buyer = new query($con);
 						$buyerRecord = $buyer->select("name","buyers","id=".$auctionRecord[$k]['buyer_id']);
 						$buyerName = ucwords($buyerRecord[0]['name']);
 						
 						//total weight and individual weights
 						$totalWeight = 0;
-						$getWeight = new query;
+						$getWeight = new query($con);
 						$weights = $getWeight->select("*","weights","lot_id=".$currentAuction);
 						$individualWeights;
 						

@@ -44,7 +44,7 @@ $settings = settings();
                         <select name="village" id="village">
                             <option value="">Select Anyone</option>
                             <?php
-                            $db = new query;
+                            $db = new query($con);
                             $recordArray = $db->select("id,village","villages","","village",0,0,1000);
                             for ($m=0;$m<count($recordArray);$m++)
                             {
@@ -69,7 +69,7 @@ $settings = settings();
                             <select name="farmer" style="width:171px;-moz-border-radius:0px;-webkit-border-radius:0px;" id="farmer" onchange="getVillage(this.id,'getVillage','showVillage');">
                                 <option value="">Select Farmer</option>
                                 <?php
-                                $db = new query;
+                                $db = new query($con);
                                 $records = $db->select("id,name,village_id","farmers","","name",0,0,1000);
                                 for ($m=0;$m<count($records);$m++)
                                 {
@@ -100,7 +100,7 @@ $settings = settings();
                 	<select name="quality" id="quality">
                         <option value="">Select Quality</option>
                         <?php
-                        $db = new query;
+                        $db = new query($con);
                         $records = $db->select("id,quality","quality","","id",0,0,1000);
                         for ($m=0;$m<count($records);$m++)
                         {
@@ -137,7 +137,7 @@ $settings = settings();
                     <select name="buyer" id="buyer">
                         <option value="<?php if($settings['multiple_buyers'] == 1) { echo '0'; } ?>">Select Buyer</option>
                         <?php
-                        $db = new query;
+                        $db = new query($con);
                         $records = $db->select("id,name","buyers","","name",0,0,1000);
                         for ($m=0;$m<count($records);$m++)
                         {

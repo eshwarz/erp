@@ -30,7 +30,7 @@ require_once("../../platform/escape_data.php");
                         	<option value="">Select Date</option>
                             <?php
 							$datesArray;
-							$db = new query;
+							$db = new query($con);
 							$records = $db->select("date","auction_list","","date",1,0,1000);
 							for ($i=0;$i<count($records);$i++)
 							{

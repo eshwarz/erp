@@ -12,7 +12,7 @@ if (!empty($money))
 {
 	//inserting into the farmer_credit_payments table.
 	$payment_date = date('Y-m-d');
-	$db = new query;
+	$db = new query($con);
 	$db->insert('buyer_credit_usage','buyer_id,bill_id,money,description,date',"$buyer_id,$bill_id,$money,'$description','$payment_date'");
 	$deduction = $db->select('id','buyer_credit_usage',"bill_id=".$bill_id." AND money=".$money." AND date='$payment_date'",'date',1,0,1);
 	?>
