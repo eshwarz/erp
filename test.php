@@ -2,7 +2,7 @@
 error_reporting(E_ERROR | E_PARSE);
 require_once('conn.php');
 
-$dbname = 'tamarind';
+$dbname = 'thejbbiu_tamarind';
 $sql = "SHOW TABLES FROM $dbname";
 $result = mysqli_query($con, $sql);
 
