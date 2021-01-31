@@ -57,7 +57,7 @@ class query
 		{
 			$get_table = 'DESCRIBE '.$table_name;
 			$get_table_result = mysqli_query($this->con, $get_table);
-			while ($get_table_row = mysqli_fetch_array($get_table_result, MYSQLI_ASSOC))
+			while ($get_table_row = mysqli_fetch_array($get_table_result))
 			{
 				$exploded_array[] = $get_table_row['Field'];
 			}
@@ -110,7 +110,7 @@ class query
 			die("Error in ( ".$sql." ): ".mysqli_connect_error());
 		}
 		$i = 0;
-		while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+		while ($row = mysqli_fetch_array($result))
 		{
 			for ($m = 0; $m < count($exploded_array); $m++)
 			{
@@ -127,7 +127,7 @@ class query
 		$result = mysqli_query($this->con, $sql);
 		$i = 0;
 		$record_array;
-		while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+		while ($row = mysqli_fetch_array($result)) {
 			$record_array[] = $row;
 		}
 		return $record_array;
