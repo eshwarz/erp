@@ -52,7 +52,7 @@ function get_fields ($table)
 {
 	$fields;
 	$get_fields = mysqli_query($con, "SHOW FIELDS FROM ".$table);
-	while ($row = mysql_fetch_row($get_fields))
+	while ($row = mysqli_fetch_row($get_fields))
 	{
 		if ($row[0] == 'id')
 			continue;
@@ -66,7 +66,7 @@ function get_farmers_with_ids ()
 {
 	$get_farmers = "SELECT id,name FROM farmers ORDER BY name";
 	$get_farmers_result = mysqli_query($con, $get_farmers);
-	while ($row = mysqli_fetch_array($get_farmers_result))
+	while ($row = mysqli_fetch_array($get_farmers_result, MYSQLI_ASSOC))
 	{
 		$ids[] = $row['id'];
 		$names[] = $row['name'];
@@ -78,7 +78,7 @@ function get_farmer_by_id ($id)
 {
 	$get_farmers = "SELECT name FROM farmers WHERE id=".$id;
 	$get_farmers_result = mysqli_query($con, $get_farmers);
-	$row = mysqli_fetch_array($get_farmers_result);
+	$row = mysqli_fetch_array($get_farmers_result, MYSQLI_ASSOC);
 	return ucwords($row['name']);
 }
 
@@ -86,7 +86,7 @@ function get_buyers_with_ids ()
 {
 	$get_buyers = "SELECT id,name FROM buyers ORDER BY name";
 	$get_buyers_result = mysqli_query($con, $get_buyers);
-	while ($row = mysqli_fetch_array($get_buyers_result))
+	while ($row = mysqli_fetch_array($get_buyers_result, MYSQLI_ASSOC))
 	{
 		$ids[] = $row['id'];
 		$names[] = $row['name'];
@@ -98,7 +98,7 @@ function get_buyer_by_id ($id)
 {
 	$get_buyers = "SELECT name FROM buyers WHERE id=".$id;
 	$get_buyers_result = mysqli_query($con, $get_buyers);
-	$row = mysqli_fetch_array($get_buyers_result);
+	$row = mysqli_fetch_array($get_buyers_result, MYSQLI_ASSOC);
 	return ucwords($row['name']);
 }
 
@@ -106,7 +106,7 @@ function get_qualities_with_ids ()
 {
 	$get_quality = "SELECT id,quality FROM quality";
 	$get_quality_result = mysqli_query($con, $get_quality);
-	while ($row = mysqli_fetch_array($get_quality_result))
+	while ($row = mysqli_fetch_array($get_quality_result, MYSQLI_ASSOC))
 	{
 		$ids[] = $row['id'];
 		$qualities[] = $row['quality'];
@@ -118,7 +118,7 @@ function get_quality_by_id ($id)
 {
 	$get_quality = "SELECT quality FROM quality WHERE id=".$id;
 	$get_quality_result = mysqli_query($con, $get_quality);
-	$row = mysqli_fetch_array($get_quality_result);
+	$row = mysqli_fetch_array($get_quality_result, MYSQLI_ASSOC);
 	return ucwords($row['quality']);
 }
 
@@ -126,7 +126,7 @@ function get_villages_with_ids ()
 {
 	$get_village = "SELECT id,village FROM villages";
 	$get_village_result = mysqli_query($con, $get_village);
-	while ($row = mysqli_fetch_array($get_village_result))
+	while ($row = mysqli_fetch_array($get_village_result, MYSQLI_ASSOC))
 	{
 		$ids[] = $row['id'];
 		$villages[] = $row['village'];
@@ -138,7 +138,7 @@ function get_village_by_id ($id)
 {
 	$get_village = "SELECT village FROM villages WHERE id=".$id;
 	$get_village_result = mysqli_query($con, $get_village);
-	$row = mysqli_fetch_array($get_village_result);
+	$row = mysqli_fetch_array($get_village_result, MYSQLI_ASSOC);
 	return ucwords($row['village']);
 }
 
@@ -146,10 +146,10 @@ function get_village_by_farmer_id ($farmer_id)
 {
 	$get_village_id = "SELECT village_id FROM farmers WHERE id=".$farmer_id;
 	$get_village_id_result = mysqli_query($con, $get_village_id);
-	$row = mysqli_fetch_array($get_village_id_result);
+	$row = mysqli_fetch_array($get_village_id_result, MYSQLI_ASSOC);
 	$get_village_name = "SELECT village FROM villages WHERE id=".$row['village_id'];
 	$get_village_name_result = mysqli_query($con, $get_village_name);
-	$row = mysqli_fetch_array($get_village_name_result);
+	$row = mysqli_fetch_array($get_village_name_result, MYSQLI_ASSOC);
 	return ucwords($row['village']);
 }
 

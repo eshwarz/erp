@@ -92,7 +92,7 @@ if (!empty($date))
 		$result = mysqli_query($con, $sql);
 
 		$records = array();
-		while ($row = mysqli_fetch_array($result)) {
+		while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 			$records[] = $row;
 		}
 

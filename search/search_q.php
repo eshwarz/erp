@@ -15,7 +15,7 @@ if ($farmersCount > 0)
 	?>
     <div class="searchHeader">Farmers</div>
     <?php
-	while($rowFarmer = mysqli_fetch_array($farmersResult))
+	while($rowFarmer = mysqli_fetch_array($farmersResult, MYSQLI_ASSOC))
 	{
 		?>
         <div class="searchElements" id="<?php echo $rowFarmer['id']; ?>" tabindex="<?php $tabIndex++; echo $tabIndex; ?>" onmousedown="ajaxpage('search/farmers/farmers.php?farmerId=<?php echo $rowFarmer['id']; ?>','mainContent');">
@@ -35,7 +35,7 @@ if ($buyersCount > 0)
 	?>
     <div class="searchHeader">Buyers</div>
     <?php
-	while($rowBuyer = mysqli_fetch_array($buyersResult))
+	while($rowBuyer = mysqli_fetch_array($buyersResult, MYSQLI_ASSOC))
 	{
 		?>
         <div class="searchElements" id="<?php echo $rowBuyer['id']; ?>" tabindex="<?php $tabIndex++; echo $tabIndex; ?>" onmousedown="ajaxpage('search/buyers/buyers.php?buyerId=<?php echo $rowBuyer['id']; ?>','mainContent');">
@@ -55,7 +55,7 @@ if ($villagesCount > 0)
 	?>
     <div class="searchHeader">Villages</div>
     <?php
-	while($rowVillage = mysqli_fetch_array($villagesResult))
+	while($rowVillage = mysqli_fetch_array($villagesResult, MYSQLI_ASSOC))
 	{
 		?>
         <div class="searchElements" id="<?php echo $rowVillage['id']; ?>" tabindex="<?php $tabIndex++; echo $tabIndex; ?>" onmousedown="">

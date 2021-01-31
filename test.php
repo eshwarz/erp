@@ -17,7 +17,7 @@ echo "<b>Tables</b>";
 echo "<br/>";
 echo "-----------------------------------------------------------------------";
 echo "<br/>";
-while ($row = mysql_fetch_row($result)) {
+while ($row = mysqli_fetch_row($result)) {
     echo "{$row[0]}";
     echo "<br/>";
 }
@@ -33,7 +33,7 @@ if ($_GET['table'])
 	echo "-----------------------------------------------------------------------";
 	echo "<br/>";
 	$result = mysqli_query($con, "SHOW FIELDS FROM ".$table);
-	while ($row = mysql_fetch_row($result))
+	while ($row = mysqli_fetch_row($result))
 	{
     echo "{$row[0]}";
     echo "<br/>";
@@ -44,7 +44,7 @@ if ($_GET['table'])
 $br = "<br/>";
 
 echo $br;
-$p = array ('sss','ddd','fff','aaa');
+$p = array('sss','ddd','fff','aaa');
 $e = '1';
 echo gettype($p);
 echo $br;
@@ -53,7 +53,7 @@ echo $br;
 
 $sql = "SELECT * FROM settings";
 $query = mysqli_query($con, $sql);
-while ($row = mysqli_fetch_array($query))
+while ($row = mysqli_fetch_array($query, MYSQLI_ASSOC))
 {
 	echo $br;
 	echo 'multiple_buyers: '.$row['multiple_buyers'].$br;
