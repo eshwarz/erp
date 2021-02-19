@@ -19,7 +19,7 @@ function calculateTotals ($bagsArray,$totalCostsArray)
 		$bagCount = $bagCount+$bagsArray[$n];
 	}
 	//deductions.
-	$db = new query($con);
+	$db = new query($GLOBALS['con']);
 	$records = $db->select("cash,commission,amali","farmer_deductions");
 	
 	$cashFactor = $records[0]['cash'];
