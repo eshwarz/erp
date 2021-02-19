@@ -31,7 +31,7 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
 		$bagCount = $bagCount+$bagsArray[$n];
 	}
 	//deductions.
-	$db = new query($con);
+	$db = new query($GLOBALS['con']);
 	$records = $db->select("cash,commission,amali","farmer_deductions");
 	
 	$cashFactor = $records[0]['cash'];
@@ -47,7 +47,7 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
 
     //getting the deductions from the database to insert them into the bill.
     
-    $bill_db = new query($con);
+    $bill_db = new query($GLOBALS['con']);
     $bill_records = $bill_db->select('id','farmer_bills',"farmer_id=$farmerId AND date='$date'");
     $bill_id = $bill_records[0]['id'];
     // $bill_advance = (int) $bill_records[0]['advance'];
@@ -55,11 +55,11 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
     // $bill_misc = (int) $bill_records[0]['misc'];
     // $deduction_amount = $bill_advance + $bill_freight + $bill_misc;
     
-    $expenses_db = new query($con);
+    $expenses_db = new query($GLOBALS['con']);
     $expenses_records = $expenses_db->select('id,description,money','farmer_expenses',"bill_id=$bill_id");
 
     //getting credit payments for particular bills.
-    $credit_db = new query($con);
+    $credit_db = new query($GLOBALS['con']);
     $credit_payment = $credit_db->select('*','farmer_credit_payments','bill_id='.$bill_id);
 	?>
     <table class="bill_width">
