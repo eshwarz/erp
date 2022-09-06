@@ -31,7 +31,7 @@ $record = $db->select("name,town","buyers","id=".$buyerId);
                         <select id="date" onChange="ajaxPost('search/buyers/view_date_q.php','buyerId,date','getResults');">
                             <option value="">Select Date</option>
                             <?php
-                            $datesArray;
+                            $datesArray = [];
                             $db = new query($con);
                             if ($settings['multiple_buyers'] == 1)
                             {    

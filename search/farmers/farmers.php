@@ -31,7 +31,7 @@ $villageRecord = $db->select("village","villages","id=".$villageId);
                         <select id="date" onChange="ajaxPost('search/farmers/view_date_q.php','farmerId,date','getResults');">
                             <option value="">Select Date</option>
                             <?php
-                            $datesArray;
+                            $datesArray = [];
                             $db = new query($con);
                             $records = $db->select("date","lots","farmer_id=".$farmerId,"date",0,0,1000);
                             
