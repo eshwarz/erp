@@ -94,10 +94,10 @@ function calculateTotals ($bagsArray,$totalCostsArray)
 <?php
 if (!empty($receivedDate))
 {
-	$excludedIds;
+	$excludedIds = [];
 	//costs array and bags array for calculating the total money received by the farmer.
-	$totalCosts;
-	$totalBags;
+	$totalCosts = [];
+	$totalBags = [];
 	$date;
 	$dateNew; //keeping trak of previous date.
 	$db = new query($con);
