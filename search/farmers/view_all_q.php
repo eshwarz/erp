@@ -91,7 +91,7 @@ function calculateTotals ($bagsArray,$totalCostsArray)
 
 <div class="p20">
 <?php
-$excludedIds;
+$excludedIds = [];
 //costs array and bags array for calculating the total money received by the farmer.
 $totalCosts;
 $totalBags;
