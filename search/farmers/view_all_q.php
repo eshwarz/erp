@@ -213,7 +213,7 @@ for ($m=0;$m<count($records);$m++)
 					{
 						$individualWeights = $individualWeights.",".$weights[$j]["weight"];
 					}
-					$totalWeight = $totalWeight+$weights[$j]["weight"];
+					$totalWeight = (int) $totalWeight + (int) $weights[$j]["weight"];
 				}
 				
 				?>
