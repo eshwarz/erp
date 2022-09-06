@@ -3,7 +3,7 @@ error_reporting(E_ERROR | E_PARSE);
 require("../../conn.php");
 require_once("../../platform/query.php");
 require_once("../../platform/escape_data.php");
-$pending = $_REQUEST['pending'];
+$pending = isset($_REQUEST['pending']) ? $_REQUEST['pending'] : null;
 ?>
 <div class="wa bce brd_b">
     <div class="wa p10 cf tc bbg dontPrint"><?php if ($pending == 1) { echo 'Pending List'; } else { echo 'Weight List'; } ?></div>
