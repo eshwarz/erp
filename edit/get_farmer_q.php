@@ -4,7 +4,7 @@ require("../conn.php");
 require_once("../platform/query.php");
 require_once("../platform/escape_data.php");
 $farmer = escape_data($_REQUEST['search_farmer']);
-$db = new query();
+$db = new query($con);
 $records = $db->select('*','farmers',"name LIKE '%$farmer%'",'name',0,0,50);
 
 if ($farmer)
