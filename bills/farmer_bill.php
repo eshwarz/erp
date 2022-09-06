@@ -405,7 +405,7 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
                                 {
                                     $individualWeights = $individualWeights.",".$weights[$j]["weight"];
                                 }
-                                $totalWeight = $totalWeight+$weights[$j]["weight"];
+                                $totalWeight = (int) $totalWeight + (int) $weights[$j]["weight"];
                             }
                             
                             ?>
