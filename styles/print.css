@@ -21,5 +21,5 @@ table {border-collapse:collapse;}
 tr.border td {border-width:1px 0px;border-style:solid;border-color:#333; }
 tr.border td.first {border-width:1px 0px 1px 1px;border-style:solid;border-color:#333;}
 tr.border td.last {border-width:1px 1px 1px 0px;border-style:solid;border-color:#333;}
-tr.print_all_borders th, tr.print_all_borders td {border:1px solid #333; word-wrap: break-word;}
+tr.print_all_borders th, tr.print_all_borders td {border:1px solid #333;word-break: break-word; }
 .print_tc{text-align:center;}
