@@ -91,6 +91,7 @@ select{background:#FFF;border:1px solid #333;/*#376bb2*/width:208px;padding:3px;
 
 table { border-collapse:collapse; }
 tr.print_all_borders { border:1px solid transparent; }
+tr.print_all_borders td { word-break: break-word; }
 tr.print_all_borders:hover td { border-width:1px 0px;border-style:solid;border-color:#333; }
 tr.print_all_borders:hover td.first {border-width:1px 0px 1px 1px;border-style:solid;border-color:#333;}
 tr.print_all_borders:hover td.last {border-width:1px 1px 1px 0px;border-style:solid;border-color:#333;}
