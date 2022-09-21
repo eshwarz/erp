@@ -274,8 +274,8 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
                     if ($date != $dateNew && !empty($totalCosts))
                     {
                         calculateTotals($totalBags,$totalCosts,$farmerId,$receivedDate);
-                        $totalCosts = NULL;
-                        $totalBags = NULL;
+                        $totalCosts = [];
+                        $totalBags = [];
                         echo "</div>";
                     }
                     
