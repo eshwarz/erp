@@ -65,6 +65,10 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
     //getting credit payments for particular bills.
     $credit_db = new query($GLOBALS['con']);
     $credit_payment = $credit_db->select('*','farmer_credit_payments','bill_id='.$bill_id);
+
+    if (!$credit_payment) {
+        $credit_payment = [];
+    }
 	?>
     <table class="bill_width">
     	<tr class="bcd brd_tds border">

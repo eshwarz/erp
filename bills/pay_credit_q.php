@@ -18,6 +18,10 @@ if (!empty($credit))
 	//counting 
 	$get_db = new query($con);
 	$get_db_record = $get_db->select('credit','farmer_accounts','farmer_id='.$farmer_id);
+    
+    if (!$get_db_record) {
+        $get_db_record = [];
+    }
 	
 	if (count($get_db_record) == 0)
 	{
