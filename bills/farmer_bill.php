@@ -58,6 +58,10 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
     $expenses_db = new query($GLOBALS['con']);
     $expenses_records = $expenses_db->select('id,description,money','farmer_expenses',"bill_id=$bill_id");
 
+    if (!$expenses_records) {
+        $expenses_records = [];
+    }
+
     //getting credit payments for particular bills.
     $credit_db = new query($GLOBALS['con']);
     $credit_payment = $credit_db->select('*','farmer_credit_payments','bill_id='.$bill_id);
