@@ -201,6 +201,9 @@ if (!empty($date))
 		$after_additions = $grandTotal;
 		// Adding additions to the billed money.
 		$additions = $db->select('*','buyer_expenses','bill_id='.$bill_id);
+        if (!$additions) {
+            $additions = [];
+        }
 		for ($p=0;$p<count($additions);$p++)
 		{
 			$add_id = $additions[$p]['id'];
@@ -249,7 +252,7 @@ if (!empty($date))
 			?>
 			<tr class="hidden_link" id="remove_deduction_<?php echo $sub_id; ?>">
 				<td colspan="6" align="right" class="fb"><?php echo $credit_usage[$p]['description'] ?></td>
-				<td>
+				<td align="right">
 					<span class="custom_deduction"><?php echo $credit_usage[$p]['money']; ?></span>
 					<a id="<?php echo $sub_id; ?>" class="remove_deduction hide" href="#">X</a>
 				</td>
