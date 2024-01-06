@@ -11,6 +11,7 @@ $vRecords = $db->select("village","villages","id=".$village_id);
 
 ?>
 <div id="data-farmer-id" data-farmer-id="<?php echo $records[0]['id'] ?>">
+	<input type="hidden" id="village" value="<?php echo $village_id ?>" />
 	<?php
 		echo $vRecords[0]["village"];
 	?>
