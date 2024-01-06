@@ -82,7 +82,6 @@ if (!$isNumEntry) {
 }
 
 // option for opening the farmer with ID directly
-var_dump(is_numeric($searchString));
 if (is_numeric($searchString)) {
   $db = new query($con);
   $farmer = $db->select('id,fid,name','farmers','fid='.$searchString);
