@@ -54,11 +54,11 @@ else
 	$dbcall = new query($con);
 	if ($pending_flag == 0)
 	{
-		$dbcall->insert("lots","serial,lot_number,total_weight,quality,farmer_id,buyer_id,cost,date","'".$serialNumber."',".$lotNumber.",".$totalWeight.",".$quality.",".$farmerId.",".$buyer.",".$cost.",'".$date."'");
+		$dbcall->insert("lots","serial,lot_number,quality,farmer_id,buyer_id,cost,date","'".$serialNumber."',".$lotNumber.",".$quality.",".$farmerId.",".$buyer.",".$cost.",'".$date."'");
 	}
 	else
 	{
-		$dbcall->insert("lots","serial,lot_number,total_weight,quality,farmer_id,buyer_id,cost,pending,date","'".$serialNumber."',".$lotNumber.",".$totalWeight.",".$quality.",".$farmerId.",".$buyer.",".$cost.",1,'".$date."'");
+		$dbcall->insert("lots","serial,lot_number,quality,farmer_id,buyer_id,cost,pending,date","'".$serialNumber."',".$lotNumber.",".$quality.",".$farmerId.",".$buyer.",".$cost.",1,'".$date."'");
 	}
 	
 	$record = $dbcall->select("lot_id","lots","farmer_id=".$farmerId." AND buyer_id=".$buyer."","time",1,0,1);
