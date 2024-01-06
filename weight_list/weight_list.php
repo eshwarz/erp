@@ -147,18 +147,21 @@ $settings = settings();
             <input
               type="submit"
               class="button"
+              value="Save"
+              id="weightListPost"
+              onclick="ajaxPost('weight_list/weight_list_q.php','village,farmer,quality,buyer,cost,lotNumber,totalWeight','result');
+                this.form.reset();
+                document.getElementById('fid').focus();
+                return false;
+              "
+            />
+            <input
+              type="submit"
+              class="button"
               value="Save & Retain"
               id="weightListPost"
-              onclick="saveWeightList();return false;" />
-              <input
-                type="submit"
-                class="button"
-                value="Save"
-                id="weightListPost"
-                onclick="ajaxPost('weight_list/weight_list_q.php','village,farmer,quality,buyer,cost,lotNumber,totalWeight','result');
-                  this.form.reset();
-                  return false;
-                " />
+              onclick="saveWeightList();return false;"
+            />
             <?php
           }
           ?>
