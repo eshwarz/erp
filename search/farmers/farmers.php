@@ -10,7 +10,7 @@ $villageId = $record[0]['village_id'];
 $villageRecord = $db->select("village","villages","id=".$villageId);
 ?>
 <div class="wa bce brd_b">
-    <div class="wa p10 cf tc bbg fb">Farmer: <?php echo ucwords($record[0]['name'])." (<b>".$record[0]['fid'])."</b>) - ".ucwords($villageRecord[0]['village']); ?></div>
+    <div class="wa p10 cf tc bbg fb">Farmer: <?php echo ucwords($record[0]['name'])." (<b>".$record[0]['fid']."</b>) - ".ucwords($villageRecord[0]['village']); ?></div>
     <div class="pt20 pb20">
     	<table cellpadding="2" align="center">
         	<tr>
