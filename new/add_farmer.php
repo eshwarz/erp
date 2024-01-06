@@ -10,12 +10,12 @@ require_once("../platform/query.php");
     <form>
       <table cellpadding="5" align="center">
         <tr>
-          <td width="200px">Farmer's ID</td>
-          <td><input type="text" class="input" id="id" placeholder="Farmer's ID" /></td>
+          <td width="200px">ID</td>
+          <td><input type="number" id="fid" placeholder="ID" /></td>
         </tr>
         <tr>
           <td width="200px">Farmer's name</td>
-          <td><input type="text" class="input" id="farmer" placeholder="Farmer's Name" /></td>
+          <td><input type="text" id="farmer" placeholder="Farmer's Name" /></td>
         </tr>
         <tr>
           <td>Select Village</td>
@@ -39,15 +39,15 @@ require_once("../platform/query.php");
         </tr>
         <tr>
           <td width="200px">Phone Number</td>
-          <td><input type="text" class="input" id="phone" placeholder="Phone Number" /></td>
+          <td><input type="text" id="phone" placeholder="Phone Number" /></td>
         </tr>
         <tr>
           <td width="200px">Account Number</td>
-          <td><input type="text" class="input" id="account" placeholder="Account Number" /></td>
+          <td><input type="text" id="account" placeholder="Account Number" /></td>
         </tr>
         <tr>
           <td width="200px">IFSC Code</td>
-          <td><input type="text" class="input" id="ifsc" placeholder="IFSC Code" /></td>
+          <td><input type="text" id="ifsc" placeholder="IFSC Code" /></td>
         </tr>
         <tr>
           <td></td>
