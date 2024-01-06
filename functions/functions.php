@@ -8,6 +8,7 @@ function calculateDate ()
 	$time_format = 'Y-m-d';
 	$current_date = getdate(time());
 	$day = $current_date["weekday"];
+	var_dump($day);
 	if ($day == "Friday")
 	{
 		$output_date = date('Y-m-d');
@@ -36,7 +37,7 @@ function calculateDate ()
 	{
 		$output_date = gmdate($time_format,((time() - (6*24*60*60)) +(5.5*60*60)));
 	}
-
+	var_dump($output_date);
 	return $output_date;
 }
 

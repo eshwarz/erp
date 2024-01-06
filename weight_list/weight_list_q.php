@@ -41,15 +41,15 @@ else
 		$serialNumber = 0;
 		
 	//checking whether lot is pending or not.
-	$pending_flag = 0;
-	for ($m=1;$m<=$lotNumber;$m++)
-	{
-		if ($_REQUEST["bag".$m] == 0)
-		{
-			$pending_flag = 1;
-			break;
-		}
-	}
+	// $pending_flag = 0;
+	// for ($m=1;$m<=$lotNumber;$m++)
+	// {
+	// 	if ($_REQUEST["bag".$m] == 0)
+	// 	{
+	// 		$pending_flag = 1;
+	// 		break;
+	// 	}
+	// }
 
 	$dbcall = new query($con);
 	if ($pending_flag == 0)
