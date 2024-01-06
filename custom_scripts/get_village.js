@@ -5,10 +5,12 @@ function getVillage(farmerId,targetId,showResult)
 	$("#"+targetId).load("weight_list/get_village.php?farmer_id="+fid,function(){
 		//$("#"+showResult).css({"visibility":"visible"});
 		$("#"+showResult).css({"display":"block"});
+		setTimeout(function (){
+			var dataFarmerId = $('#data-farmer-id').attr('data-farmer-id');
+			var $farmer = $('#farmer');
+			$farmer.attr('value', dataFarmerId);
+			$farmer.trigger('change');
+		});
 	});
 
-	var dataFarmerId = $('#data-farmer-id').attr('data-farmer-id');
-	var $farmer = $('#farmer');
-	$farmer.attr('value', dataFarmerId);
-	$farmer.trigger('change');
 }
