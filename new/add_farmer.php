@@ -57,7 +57,7 @@ require_once("../platform/query.php");
               class="button"
               value="Add Farmer"
               id="addFarmer"
-              onclick="ajaxPost('new/add_farmer_q.php','farmer,village','result');return false;"
+              onclick="ajaxPost('new/add_farmer_q.php','farmer,village,fid,phone,account,ifsc','result');return false;"
             />
           </td>
         </tr>
