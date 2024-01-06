@@ -104,6 +104,8 @@
 .di {display:inline;}
 .dib {display:inline-block;}
 .dc { display:compact; }
+.flex { display: flex; }
+.aic { align-items: center; }
 
 .fl { float:left; }
 .fr { float:right; }

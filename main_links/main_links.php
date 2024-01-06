@@ -1,6 +1,6 @@
 
 <div class="bbg shadow_med dontPrint">
-    <div class="ma cf tc main_links" style="width:980px;" id="main_links">
+    <div class="ma cf tc main_links flex aic" style="width:980px;" id="main_links">
     	
         <a href="index.php" id="home" class="<?php if($tab=="index"){echo "selected";}?>">Home</a>
         
