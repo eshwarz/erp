@@ -26,7 +26,7 @@ if ($farmersCount > 0)
       onmousedown="ajaxpage('search/farmers/farmers.php?farmerId=<?php echo $rowFarmer['id']; ?>','mainContent');"
     >
       <?php
-        echo ucwords($rowFarmer['name']);
+        echo ucwords($rowFarmer['name'])." (<b>".$rowFarmer['fid']."</b>)";
       ?>
     </div>
     <?php
@@ -89,17 +89,15 @@ if (is_numeric($searchString)) {
   {
     $f = $farmer[0];
     ?>
-    <div class="resultFooter">
-      <div
-        class="searchElements"
-        id="<?php echo $f['id']; ?>"
-        tabindex="<?php $tabIndex++; echo $tabIndex; ?>"
-        onmousedown="ajaxpage('search/farmers/farmers.php?farmerId=<?php echo $f['id']; ?>','mainContent');"
-      >
-        <?php
-          echo ucwords($f['name'])." (".$f['fid'].")";
-        ?>
-      </div>
+    <div
+      class="searchElements mb5"
+      id="<?php echo $f['id']; ?>"
+      tabindex="<?php $tabIndex++; echo $tabIndex; ?>"
+      onmousedown="ajaxpage('search/farmers/farmers.php?farmerId=<?php echo $f['id']; ?>','mainContent');"
+    >
+      <?php
+        echo ucwords($f['name'])." (<b>".$f['fid']."</b>)";
+      ?>
     </div>
     <?php
   } else {
