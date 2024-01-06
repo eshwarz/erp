@@ -8,7 +8,6 @@ function calculateDate ()
 	$time_format = 'Y-m-d';
 	$current_date = getdate(time());
 	$day = $current_date["weekday"];
-	var_dump($day);
 	if ($day == "Friday")
 	{
 		$output_date = date('Y-m-d');
