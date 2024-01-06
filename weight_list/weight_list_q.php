@@ -12,6 +12,7 @@ $quality = $_REQUEST['quality'];
 $buyer = $_REQUEST['buyer'];
 $cost = $_REQUEST['cost'];
 $lotNumber = $_REQUEST['lotNumber'];
+$totalWeight = $_REQUEST['totalWeight'];
 $serialNumber = escape_data($_REQUEST['serialNumber']);
 $settings = settings();
 
@@ -53,47 +54,57 @@ else
 	$dbcall = new query($con);
 	if ($pending_flag == 0)
 	{
-		$dbcall->insert("lots","serial,lot_number,quality,farmer_id,buyer_id,cost,date","'".$serialNumber."',".$lotNumber.",".$quality.",".$farmerId.",".$buyer.",".$cost.",'".$date."'");
+		$dbcall->insert("lots","serial,lot_number,total_weight,quality,farmer_id,buyer_id,cost,date","'".$serialNumber."',".$lotNumber.",".$totalWeight.",".$quality.",".$farmerId.",".$buyer.",".$cost.",'".$date."'");
 	}
 	else
 	{
-		$dbcall->insert("lots","serial,lot_number,quality,farmer_id,buyer_id,cost,pending,date","'".$serialNumber."',".$lotNumber.",".$quality.",".$farmerId.",".$buyer.",".$cost.",1,'".$date."'");
+		$dbcall->insert("lots","serial,lot_number,total_weight,quality,farmer_id,buyer_id,cost,pending,date","'".$serialNumber."',".$lotNumber.",".$totalWeight.",".$quality.",".$farmerId.",".$buyer.",".$cost.",1,'".$date."'");
 	}
 	
 	$record = $dbcall->select("lot_id","lots","farmer_id=".$farmerId." AND buyer_id=".$buyer."","time",1,0,1);
 	$lotId = $record[0]['lot_id'];
 	
 	//storing weights using lot_id after deducting 2 kgs from each bag.
-	$totalWeight = 0;
-
 	//getting weight deduction.
 	$db_deduction = new query($con);
 	$record = $db_deduction->select('*','weight_deduction');
 	$deduction = $record[0]['weight_deduction'];
 
-	for ($m=1;$m<=$lotNumber;$m++)
-	{
-		if ($_REQUEST['buyer'.$m] == '')
-			$bag_buyer = 0;
-		else
-			$bag_buyer = $_REQUEST['buyer'.$m];
+	/**
+	 * Previous code for multiple lots
+	 **/
+	// $totalWeight = 0;
+	// for ($m=1;$m<=$lotNumber;$m++)
+	// {
+	// 	if ($_REQUEST['buyer'.$m] == '')
+	// 		$bag_buyer = 0;
+	// 	else
+	// 		$bag_buyer = $_REQUEST['buyer'.$m];
 
-		if ($_REQUEST["bag".$m] != 0)
-		{
-			$bag = $_REQUEST["bag".$m]-$deduction;
-			$totalWeight = $totalWeight+$bag;
-		}
-		else
-		{
-			$bag = 0;
-			$totalWeight = $totalWeight+$bag;
-		}
+	// 	if ($_REQUEST["bag".$m] != 0)
+	// 	{
+	// 		$bag = $_REQUEST["bag".$m]-$deduction;
+	// 		$totalWeight = $totalWeight+$bag;
+	// 	}
+	// 	else
+	// 	{
+	// 		$bag = 0;
+	// 		$totalWeight = $totalWeight+$bag;
+	// 	}
 
-		$dbcall->insert("weights","lot_id,buyer_id,weight","".$lotId.",".$bag_buyer.",".$bag."");
-	}
+	// 	$dbcall->insert("weights","lot_id,buyer_id,weight","".$lotId.",".$bag_buyer.",".$bag."");
+	// }
+
+	/**
+	 * Current code for single bag (consolidated weight)
+	 **/
+	$totalWeight -= $deduction * $lotNumber;
+	$dbcall->insert("weights","lot_id,buyer_id,weight","".$lotId.",".$bag_buyer.",".$totalWeight."");
 	
 	//calculating total cost and storing it.
-	$totalCost = $totalWeight*($cost/100);
+	// $totalCost = $totalWeight * ($cost / 100);
+	$totalCost = $totalWeight * ($cost);
+	
 	$dbcall->update("lots","total_cost",$totalCost,"lot_id=".$lotId);
 	
 	?>

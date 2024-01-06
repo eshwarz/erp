@@ -6,7 +6,7 @@
 <script type="text/javascript" src="platform/scripts/waterMark.js"></script>
 <script type="text/javascript" src="platform/scripts/mouse_over_accordion.js"></script>
 <script type="text/javascript" src="platform/scripts/jewel_box.js"></script>
-<script type="text/javascript" src="custom_scripts/get_bags.js"></script>
+<!-- <script type="text/javascript" src="custom_scripts/get_bags.js"></script> -->
 <script type="text/javascript" src="custom_scripts/subtract_advance.js"></script>
 <script type="text/javascript" src="custom_scripts/get_village.js"></script>
 <script type="text/javascript" src="custom_scripts/toggle_farmer_module.js"></script>

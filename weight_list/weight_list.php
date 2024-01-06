@@ -115,8 +115,16 @@ $settings = settings();
       <div class="sideHeader mt5">
         <div class="w100 fl p5 pl10">Lot Number</div>
         <div class="fr">
-          <input type="text" id="lotNumber" class="lotNumber" placeholder="Lot Number" />
+          <input type="number" id="lotNumber" class="lotNumber" placeholder="Lot Number" />
           <input type="hidden" id="multiple_buyers" value="<?php echo $settings['multiple_buyers']; ?>" />
+        </div>
+        <div class="cbo"></div>
+      </div>
+
+      <div class="sideHeader mt5">
+        <div class="w100 fl p5 pl10">Total Weight</div>
+        <div class="fr">
+          <input type="number" id="totalWeight" placeholder="Total Weight" />
         </div>
         <div class="cbo"></div>
       </div>
@@ -130,13 +138,18 @@ $settings = settings();
           if ($settings['serial_numbers'] == 1)
           {
             ?>
-            <input type="submit" class="button" value="Save" id="weightListPost" onclick="ajaxPost('weight_list/weight_list_q.php','farmer_new,village,farmer,quality,buyer,cost,lotNumber,serialNumber','result');this.form.reset();document.getElementById('farmer').focus();return false;" />
+            <input type="submit" class="button" value="Save" id="weightListPost" onclick="ajaxPost('weight_list/weight_list_q.php','farmer_new,village,farmer,quality,buyer,cost,lotNumber,serialNumber,totalWeight','result');this.form.reset();document.getElementById('farmer').focus();return false;" />
             <?php
           }
           else
           {
             ?>
-            <input type="submit" class="button" value="Save" id="weightListPost" onclick="ajaxPost('weight_list/weight_list_q.php','farmer_new,village,farmer,quality,buyer,cost,lotNumber','result');this.form.reset();document.getElementById('farmer').focus();return false;" />
+            <input
+              type="submit"
+              class="button"
+              value="Save"
+              id="weightListPost"
+              onclick="ajaxPost('weight_list/weight_list_q.php','farmer_new,village,farmer,quality,buyer,cost,lotNumber,totalWeight','result');this.form.reset();document.getElementById('farmer').focus();return false;" />
             <?php
           }
           ?>
