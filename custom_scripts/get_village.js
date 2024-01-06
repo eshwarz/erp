@@ -7,9 +7,8 @@ function getVillage(farmerId,targetId,showResult)
 		$("#"+showResult).css({"display":"block"});
 		setTimeout(function (){
 			var dataFarmerId = $('#data-farmer-id').attr('data-farmer-id');
-			var $farmer = $('#farmer');
-			$farmer.attr('value', dataFarmerId);
-			$farmer.trigger('change');
+			$('#farmer').attr('value', dataFarmerId);
+			$('#farmer option[value="' + dataFarmerId + '"]').prop('selected', true);
 		});
 	});
 

@@ -45,7 +45,7 @@ $settings = settings();
               for ($m=0;$m<count($records);$m++)
               {
                 ?>
-                <option value="<?php echo $records[$m]["fid"]; ?>">
+                <option value="<?php echo $records[$m]["id"]; ?>">
                   <?php echo ucwords($records[$m]["name"]." (".$records[$m]["fid"].")"); ?>
                 </option>
                 <?php
