@@ -8,6 +8,7 @@ function getVillage(farmerId,targetId,showResult)
 				var dataFarmerId = $('#data-farmer-id').attr('data-farmer-id');
 				$('#farmer').attr('value', dataFarmerId);
 				$('#farmer option[value="' + dataFarmerId + '"]').prop('selected', true);
+				$('#quality').focus();
 			}, 50);
 		} else {
 			$("#"+showResult).css({"display":"none"});
