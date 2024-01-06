@@ -16,8 +16,8 @@ function ajaxPost(page,data,resultContainer)
 
 function saveWeightList() {
 	ajaxPost('weight_list/weight_list_q.php','village,farmer,quality,buyer,cost,lotNumber,totalWeight','result');
-	docuemnt.getElementById('quality').value = '';
-	docuemnt.getElementById('buyer').value = '';
+	document.getElementById('quality').value = '';
+	document.getElementById('buyer').value = '';
 	document.getElementById('cost').value = '';
 	document.getElementById('lotNumber').value = '';
 	document.getElementById('totalWeight').value = '';
