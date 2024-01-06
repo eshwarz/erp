@@ -37,7 +37,7 @@ a.box_link:focus{outline-style:none;}
 .button:hover{color:#FFF;}
 .button:focus{outline-style:none;}
 .button:active{background:#222;-moz-box-shadow:0px 0px 0px #777;-webkit-box-shadow:0px 0px 0px #777;}
-input[type=text] input[type=password] {color:#999;background:#FFF;border:1px solid #333;/*#376bb2*/width:200px;padding:3px;}
+input[type=text], input[type=password] {color:#999;background:#FFF;border:1px solid #333;/*#376bb2*/width:200px;padding:3px;}
 .lb_tf{width:250px;color:#333;}
 #advance,#freight,#miscellaneous{border:0px;width:100px;color:#000;padding:0px;}
 .tdTextBox{background:#FFF;border:1px solid #333;/*#376bb2*/}
