@@ -7,11 +7,11 @@ $db = new query($con);
 $records = $db->select("village_id,id","farmers","fid=".$farmerId);
 $village_id = $records[0]["village_id"];
 
-$records = $db->select("village","villages","id=".$village_id);
+$vRecords = $db->select("village","villages","id=".$village_id);
 
 ?>
 <div data-farmer-id="<?php echo $records[0]['id'] ?>">
 	<?php
-		echo $records[0]["village"];
+		echo $vRecords[0]["village"];
 	?>
 </div>
