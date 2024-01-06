@@ -168,15 +168,3 @@ $settings = settings();
     </form>
   </div>
 </div>
-<script type="text/javascript">
-  function saveWeightList() {
-    ajaxPost('weight_list/weight_list_q.php','village,farmer,quality,buyer,cost,lotNumber,totalWeight','result');
-    docuemnt.getElementById('quality').value = '';
-    docuemnt.getElementById('buyer').value = '';
-    document.getElementById('cost').value = '';
-    document.getElementById('lotNumber').value = '';
-    document.getElementById('totalWeight').value = '';
-    document.getElementById('fid').focus();
-    return false;
-  }
-</script>
