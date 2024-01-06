@@ -27,8 +27,5 @@ $(document).ready(function(){
 			//rewriting the ajaxpost script for dynamic posting of the bags.
 			document.getElementById("weightListPost").setAttribute("onclick","ajaxPost('weight_list/weight_list_q.php','farmer_new,village,farmer,quality,buyer,cost,lotNumber"+bags+"','result');this.form.reset();document.getElementById('farmer').focus();return false;");
 		}
-		
-		
-		
 	});
 });
