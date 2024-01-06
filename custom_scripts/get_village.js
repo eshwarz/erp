@@ -11,5 +11,4 @@ function getVillage(farmerId,targetId,showResult)
 	var $farmer = $('#farmer');
 	$farmer.val(dataFarmerId);
 	$farmer.trigger('change');
-
 }

@@ -28,7 +28,7 @@ $settings = settings();
       <div class="sideHeader mt5">
         <div class="w100 fl p5 pl10">Farmer ID</div>
         <div class="fr">
-          <input type="text" id="fid" placeholder="Farmer ID" onchange="getVillage(this.id,'getVillage','showVillage');" />
+          <input type="text" id="fid" placeholder="Farmer ID" onkeyup="getVillage(this.id,'getVillage','showVillage');" />
         </div>
         <div class="cbo"></div>
       </div>
@@ -37,7 +37,7 @@ $settings = settings();
         <div class="sideHeader mt5">
           <div class="w100 fl p5 pl10">Farmer</div>
           <div class="pr fr">
-            <select name="farmer" id="farmer" onchange="getVillage(this.id,'getVillage','showVillage');">
+            <select name="farmer" id="farmer">
               <option value="">Select Farmer</option>
               <?php
               $db = new query($con);
