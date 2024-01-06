@@ -99,6 +99,8 @@ else
 	 * Current code for single bag (consolidated weight)
 	 **/
 	$totalWeight -= $deduction * $lotNumber;
+	var_dump($totalWeight);
+	die;
 	$dbcall->insert("weights","lot_id,buyer_id,weight","".$lotId.",".$bag_buyer.",".$totalWeight."");
 	
 	//calculating total cost and storing it.
