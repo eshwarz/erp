@@ -105,7 +105,7 @@ $settings = settings();
       </div>
       
       <div class="sideHeader mt5">
-        <div class="w100 fl p5 pl10">Cost</div>
+        <div class="w100 fl p5 pl10">Cost Per Kg</div>
         <div class="fr">
           <input type="text" id="cost" placeholder="Cost" />
         </div>
