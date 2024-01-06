@@ -21,6 +21,6 @@ function saveWeightList() {
 	document.getElementById('cost').value = '';
 	document.getElementById('lotNumber').value = '';
 	document.getElementById('totalWeight').value = '';
-	document.getElementById('fid').focus();
+	document.getElementById('quality').focus();
 	return false;
 }
