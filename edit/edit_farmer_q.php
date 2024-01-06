@@ -8,7 +8,7 @@ $village_id = $_REQUEST['village_id'];
 $farmer_name = $_REQUEST['farmer_name'];
 if ($farmer_name)
 {
-	$db = new query();
+	$db = new query($con);
 	$db->update('farmers','village_id,name', "$village_id,'$farmer_name'",'id='.$farmer_id);
 	echo ucwords($farmer_name);
 }
