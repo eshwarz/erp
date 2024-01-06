@@ -10,6 +10,7 @@ function getVillage(farmerId,targetId,showResult)
 				$('#farmer option[value="' + dataFarmerId + '"]').prop('selected', true);
 			}, 50);
 		} else {
+			$("#"+showResult).css({"display":"none"});
 			$('#farmer option[value=""]').prop('selected', true);
 		}
 	});
