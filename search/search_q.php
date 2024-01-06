@@ -4,6 +4,7 @@ require("../conn.php");
 require_once("../platform/query.php");
 require_once("../platform/escape_data.php");
 $searchString = escape_data($_REQUEST['search']);
+$isNumEntry = is_numeric($searchString);
 
 $tabIndex = 100;
 
@@ -71,25 +72,41 @@ if ($villagesCount > 0)
     <?php
   }
 }
-?>
 
-<div class="resultFooter">
-  <?php echo "Results for &quot;".$searchString."&quot;";?>
-</div>
+if (!$isNumEntry) {
+  ?>
+  <div class="resultFooter">
+    <?php echo "Results for &quot;".$searchString."&quot;";?>
+  </div>
+  <?php
+}
 
-<?php
 // option for opening the farmer with ID directly
 var_dump(is_numeric($searchString));
 if (is_numeric($searchString)) {
   $db = new query($con);
   $farmer = $db->select('id,fid,name','farmers','fid='.$searchString);
-  
-  if ($farmer)
+  if (count($farmer) > 0)
   {
-    var_dump($farmer);
+    $f = $farmer[0];
     ?>
     <div class="resultFooter">
-      <?php echo "Results for &quot;".$searchString."&quot;";?>
+      <div
+        class="searchElements"
+        id="<?php echo $f['id']; ?>"
+        tabindex="<?php $tabIndex++; echo $tabIndex; ?>"
+        onmousedown="ajaxpage('search/farmers/farmers.php?farmerId=<?php echo $f['id']; ?>','mainContent');"
+      >
+        <?php
+          echo ucwords($f['name'])." (".$f['fid'].")";
+        ?>
+      </div>
+    </div>
+    <?php
+  } else {
+    ?>
+    <div class="resultFooter">
+      <?php echo "No Results for &quot;".$searchString."&quot;";?>
     </div>
     <?php
   }
