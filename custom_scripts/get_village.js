@@ -6,4 +6,6 @@ function getVillage(farmerId,targetId,showResult)
 		//$("#"+showResult).css({"visibility":"visible"});
 		$("#"+showResult).css({"display":"block"});
 	});
+
+	// $('#farmer').val()
 }
