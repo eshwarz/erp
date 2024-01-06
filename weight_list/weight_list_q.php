@@ -73,6 +73,11 @@ else
 
 	for ($m=1;$m<=$lotNumber;$m++)
 	{
+		if ($_REQUEST['buyer'.$m] == '')
+			$bag_buyer = 0;
+		else
+			$bag_buyer = $_REQUEST['buyer'.$m];
+
 		if ($_REQUEST["bag".$m] != 0)
 		{
 			$bag = $_REQUEST["bag".$m]-$deduction;
@@ -83,11 +88,6 @@ else
 			$bag = 0;
 			$totalWeight = $totalWeight+$bag;
 		}
-		
-		if ($_REQUEST['buyer'.$m] == '')
-			$bag_buyer = 0;
-		else
-			$bag_buyer = $_REQUEST['buyer'.$m];
 
 		$dbcall->insert("weights","lot_id,buyer_id,weight","".$lotId.",".$bag_buyer.",".$bag."");
 	}
