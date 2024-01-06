@@ -36,7 +36,6 @@ function calculateDate ()
 	{
 		$output_date = gmdate($time_format,((time() - (6*24*60*60)) +(5.5*60*60)));
 	}
-	var_dump($output_date);
 	return $output_date;
 }
 
