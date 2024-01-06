@@ -150,7 +150,6 @@ $settings = settings();
               value="Save & Retain"
               id="weightListPost"
               onclick="ajaxPost('weight_list/weight_list_q.php','village,farmer,quality,buyer,cost,lotNumber,totalWeight','result');
-                // this.form.reset();
                 docuemnt.getElementById('quality').value = '';
                 docuemnt.getElementById('buyer').value = '';
                 document.getElementById('cost').value = '';
