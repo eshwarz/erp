@@ -106,6 +106,14 @@ else
 	$totalCost = $totalWeight * ($cost);
 	
 	$dbcall->update("lots","total_cost",$totalCost,"lot_id=".$lotId);
+
+	$bill_db = new query($con);
+    $bill_records = $bill_db->select('id','farmer_bills',"farmer_id=$farmerId AND date='$date'");
+
+	//creating new bill entry in the farmer_bills in case of type == new
+	if (count($bill_records) == 0) {
+		$bill_db->insert('farmer_bills','farmer_id,date',"".$farmerId.",'".$date."'");
+	}
 	
 	?>
     <div class="tc bcc db wa p10"><?php if ($pending_flag == 1) { echo "Sent to pending list!"; } else { echo "Total Cost: Rs ".$totalCost." /-"; } ?></div>
