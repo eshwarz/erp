@@ -9,6 +9,6 @@ function getVillage(farmerId,targetId,showResult)
 
 	var dataFarmerId = $('#data-farmer-id').attr('data-farmer-id');
 	var $farmer = $('#farmer');
-	$farmer.val(dataFarmerId);
+	$farmer.attr('value', dataFarmerId);
 	$farmer.trigger('change');
 }

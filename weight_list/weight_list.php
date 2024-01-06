@@ -44,8 +44,6 @@ $settings = settings();
               $records = $db->select("id,name,fid,village_id","farmers","","name",0,0,20000);
               for ($m=0;$m<count($records);$m++)
               {
-                // $get_village_name = $db->select('village','villages','id='.$records[$m]["village_id"]);
-                // $village_name = $get_village_name[0]['village'];
                 ?>
                 <option value="<?php echo $records[$m]["fid"]; ?>">
                   <?php echo ucwords($records[$m]["name"]." (".$records[$m]["fid"].")"); ?>
