@@ -8,6 +8,16 @@ require_once("../functions/functions.php");
 $db = new query($con);
 
 $records = $db->select("*","farmer_bills","date='".$date."' and payed_to is NULL");
+?>
+<script>
+  function openFarmerBill(farmerId) {
+    document.getElementById('farmerId').value = farmerId;
+    ajaxPost('search/farmers/view_date_q.php','farmerId,date','mainContent');
+  }
+</script>
+<input type="hidden" value="" id="friendId" />
+<input type="hidden" value="<?php echo $date ?>" id="date" />
+<?php
 
 if (!empty($date))
 {
@@ -33,7 +43,9 @@ if (!empty($date))
         <tr class="brd_b print_all_borders">
           <td><?php echo $farmerName; ?></td>
           <td><?php echo $villageName; ?></td>
-          <td>-</td>
+          <td>
+            <a href="#" onclick="openFarmerBill(<?php echo $records[$i]['farmer_id'] ?>); return false;">Show bill</a>
+          </td>
         </tr>
         <?php
       }
