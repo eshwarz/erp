@@ -83,7 +83,7 @@ if (!empty($date))
 			$record = $dbCall->select("quality","quality","id=".$records[$i]['quality']);
 			$quality = $record[0]['quality'];
 			$record = $dbCall->select("name","farmers","id=".$records[$i]['farmer_id']);
-			$farmer = ucwords($record[0]['name']);
+			$farmer = ucwords($record[0]['name'])." (".$recrod[0]['fid'].")";
 			?>
 			<tr>
 				<td><?php echo $farmer; ?></td>
@@ -120,7 +120,7 @@ if (!empty($date))
 		$additions = new query($con);
 		$additionRecord = $additions->select("commission,loading,labour,	gumastha,bags,amc,rusum,gumastha_new","buyer_additions");
 		$commissionFactor = $additionRecord[0]['commission'];	//percentage
-		$loadingFactor = $additionRecord[0]['loading']	;				//per bag
+		$loadingFactor = $additionRecord[0]['loading'];				//per bag
 		$labourFactor = $additionRecord[0]['labour'];					//per bag
 		$gumasthaFactor = $additionRecord[0]['gumastha_new'];	//per bag
 		$bagsFactor = $additionRecord[0]['bags'];						//per bag
