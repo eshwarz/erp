@@ -9,7 +9,7 @@ $db = new query($con);
 
 $records = $db->select("*","farmer_bills","date='".$date."' and payed_to is NULL");
 ?>
-<input type="hidden" value="" id="friendId" />
+<input type="hidden" value="" id="farmerId" />
 <input type="hidden" value="<?php echo $date ?>" id="date" />
 <?php
 
