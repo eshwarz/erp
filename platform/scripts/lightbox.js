@@ -64,15 +64,16 @@ function open_lb(overlay, popupBox, password, actionOnPassword)
 		// hide lb_content's inner HTML
 		document.getElementById('lb_content').innerHTML = '';
 
-		var authListener = function (event) {
-			if (event.data.requester === 'ceo_here') {
-				console.log('auth listener inside open_lb');
-				actionOnPassword();
-				authBox.style.display = "none";
-			}
-			window.removeEventListener('message', authListener, false);
-		};
-		window.addEventListener('message', authListener);
+		// commented out as it is not working as expected after moving the software to cloud
+		// var authListener = function (event) {
+		// 	if (event.data.requester === 'ceo_here') {
+		// 		console.log('auth listener inside open_lb');
+		// 		actionOnPassword();
+		// 		authBox.style.display = "none";
+		// 	}
+		// 	window.removeEventListener('message', authListener, false);
+		// };
+		// window.addEventListener('message', authListener);
 	} else {
 		authBox.style.display = "none";
 	}
@@ -104,11 +105,11 @@ function startAuthentication() {
 
 var authListener = function (event) {
 	if (event.data.requester === 'ceo_here') {
-		console.log('auth listener inside open_lb');
+		var authBox = document.getElementById('authentication');
+		console.log('auth listener outside open_lb');
 		window.actionOnPassword();
 		authBox.style.display = "none";
 	}
-	// window.removeEventListener('message', authListener, false);
 };
 
 window.addEventListener('message', authListener);
