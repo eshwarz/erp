@@ -249,6 +249,7 @@ if (!empty($date))
 		$credit_usage = $db->select('*','buyer_credit_usage','bill_id='.$bill_id);
 		$after_deductions = $after_additions;
 		if (!is_null($credit_usage)) {
+
 			for ($p=0;$p<count($credit_usage);$p++)
 			{
 				$sub_id = $credit_usage[$p]['id'];
@@ -263,8 +264,8 @@ if (!empty($date))
 				<?php
 				$after_deductions -= $credit_usage[$p]['money'];
 			}
-			?>
 		}
+		?>
 
 		<tr id="result_deductions" class="border">
 			<td align="right" class="first fb" colspan="6">Final Bill</td>
