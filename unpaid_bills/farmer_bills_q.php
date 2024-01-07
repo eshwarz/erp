@@ -16,6 +16,8 @@ if (!empty($date))
   {
     $farmerRecord = $db->select("fid,name,village_id","farmers","id=".$records[$i]['farmer_id']);
     $farmerName = ucwords($farmerRecord[0]['name'])." (".$farmerRecord[0]['fid'].")";
+
+    var_dump($farmerRecord);
     $villageId = $farmerRecord[0]['village_id'];
     $villageRecord = $db->select("village","villages","id=".$villageId);
     $villageName = ucwords($villageRecord[0]['village']);
