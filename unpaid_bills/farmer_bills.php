@@ -1,8 +1,8 @@
 <?php
 error_reporting(E_ERROR | E_PARSE);
-require("../../conn.php");
-require_once("../../platform/query.php");
-require_once("../../platform/escape_data.php");
+require("../conn.php");
+require_once("../platform/query.php");
+require_once("../platform/escape_data.php");
 ?>
 <div class="wa bce brd_b">
   <div class="wa p10 cf tc bbg dontPrint">Unpaid Farmer Bills</div>
