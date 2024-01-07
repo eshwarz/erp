@@ -52,6 +52,7 @@ if (!empty($date))
 				<th class="dontPrint">Edit/Delete</th>
 			</tr>
 			<?php
+			var_dump($records);
 			for ($i=0;$i<count($records);$i++)
 			{
 				$farmer = new query($con);
