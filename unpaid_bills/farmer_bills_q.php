@@ -9,12 +9,6 @@ $db = new query($con);
 
 $records = $db->select("*","farmer_bills","date='".$date."' and payed_to is NULL");
 ?>
-<script>
-  function openFarmerBill(farmerId) {
-    document.getElementById('farmerId').value = farmerId;
-    ajaxPost('search/farmers/view_date_q.php','farmerId,date','mainContent');
-  }
-</script>
 <input type="hidden" value="" id="friendId" />
 <input type="hidden" value="<?php echo $date ?>" id="date" />
 <?php

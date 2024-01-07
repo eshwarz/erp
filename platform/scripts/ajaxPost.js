@@ -24,3 +24,8 @@ function saveWeightList() {
 	document.getElementById('quality').focus();
 	return false;
 }
+
+function openFarmerBill(farmerId) {
+	document.getElementById('farmerId').value = farmerId;
+	ajaxPost('search/farmers/view_date_q.php','farmerId,date','mainContent');
+}
