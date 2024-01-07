@@ -11,9 +11,7 @@ function calculateFarmerFinalBill()
 	});
 
 	var handlingCharges = parseInt($('#labour_handling_charges').attr('labourhandlingcharges'), 10);
-	console.log(finalBill, handlingCharges);
 	finalBill -= handlingCharges;
-	console.log(finalBill, handlingCharges);
 	$("#final_bill").attr('final_bill', finalBill);
 	$('#final_bill').html('Rs '+finalBill+' /-');
 }

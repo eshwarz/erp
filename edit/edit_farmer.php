@@ -27,8 +27,13 @@ $default = $record[0]['village_id'].",".$village_name;
 <div class="lb_message">
 	<?php
 		tf('','farmer_id','dn','farmer_id',$farmer_id);
+		tf('ID','fid','lb_tf','fid',$record[0]['fid']);
 		tf('Farmer Name','farmer_name','lb_tf','farmer_name',$record[0]['name']);
 		select_box('Village','village_id','','village_id',"$default","$village_names","$village_ids");
+		tf('Phone Number','phone','lb_tf','phone',$record[0]['phone']);
+		tf('Account Number','phone','lb_tf','account',$record[0]['account']);
+		tf('IFSC Code','phone','lb_tf','ifsc',$record[0]['ifsc']);
 	?>
-	<input type="button" class="button" style="margin-left:200px;" onclick="jqAjaxForm('POST','edit/edit_farmer_q.php','farmer_id,farmer_name,village_id','result_farmer_<?php echo $farmer_id; ?>','inside'); close_lb('popup','popup_panel','lb_loader','lb_content');" value="Save Changes"/>
+	<input type="button" class="button" style="margin-left:200px;"
+		onclick="jqAjaxForm('POST','edit/edit_farmer_q.php','fid,phone,account,ifsc,farmer_id,farmer_name,village_id','result_farmer_<?php echo $farmer_id; ?>','inside'); close_lb('popup','popup_panel','lb_loader','lb_content');" value="Save Changes"/>
 </div>
