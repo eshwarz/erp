@@ -57,6 +57,8 @@ if (!empty($date))
 				$farmer = new query($con);
 				$farmerRecord = $farmer->select("name,village_id","farmers","id=".$records[$i]['farmer_id']);
 				$farmerName = ucwords($farmerRecord[0]['name']);
+				var_dump($farmerRecord[0]);
+				die;
 				$villageId = $farmerRecord[0]['village_id'];
 				
 				$village = new query($con);

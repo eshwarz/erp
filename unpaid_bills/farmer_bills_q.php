@@ -12,7 +12,6 @@ if (!empty($date))
 {
   for ($i=0;$i<count($records);$i++)
   {
-    $db = new query($con);
     $farmerRecord = $db->select("fid,name,village_id","farmers","id=".$records[$i]['farmer_id']);
     $farmerName = ucwords($farmerRecord[0]['name'])." (".$farmerRecord[0]['fid'].")";
     $villageId = $farmerRecord[0]['village_id'];
