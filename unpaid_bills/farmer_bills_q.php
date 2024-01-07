@@ -1,10 +1,10 @@
 <?php
 error_reporting(E_ERROR | E_PARSE);
 $date = $_REQUEST['weightDate'];
-require("../../conn.php");
-require_once("../../platform/query.php");
-require_once("../../platform/escape_data.php");
-require_once("../../functions/functions.php");
+require("../conn.php");
+require_once("../platform/query.php");
+require_once("../platform/escape_data.php");
+require_once("../functions/functions.php");
 $db = new query($con);
 
 $records = $db->select("*","farmer_bills","date='".$date."'");
