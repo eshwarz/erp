@@ -72,17 +72,23 @@ $settings = settings();
 	}
 	else
 	{
-		for ($p=0;$p<count($lots);$p++)
-		{
-			$num = $p+1;
+		// for ($p=0;$p<count($lots);$p++)
+		// {
+		// 	$num = $p+1;
 
-			if ($lots[$p]['weight'] == 0)
-				$weight = $lots[$p]['weight'];
-			else
-				$weight = $lots[$p]['weight'] + ($weight_deduction * $lotNumber);
+		// 	if ($lots[$p]['weight'] == 0)
+		// 		$weight = $lots[$p]['weight'];
+		// 	else {
+		// 		$addition = $weight_deduction * $lotNumber;
+		// 		$weight = $lots[$p]['weight'] + $addition;
+		// 	}
 
-			tf('Bag '.$num,'bag'.$num,'','bag'.$num,$weight);
-		}
+		// 	tf('Bag '.$num,'bag'.$num,'','bag'.$num,$weight);
+		// }
+		$addition = $weight_deduction * $lotNumber;
+		$total_weight = $addition + $lots[0]['weight'];
+		tf('Total Weight','bag1','','bag1',$total_weight);
+
 	}
 
 	$bags = '';
