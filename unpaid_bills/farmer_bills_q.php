@@ -8,10 +8,17 @@ require_once("../functions/functions.php");
 $db = new query($con);
 
 $records = $db->select("*","farmer_bills","date='".$date."' and payed_to is NULL");
-var_dump($records[0]);
 
 if (!empty($date))
 {
+  ?>
+  <table cellpadding="5" align="center" class="bill_width_print">
+    <tr class="brd_b bcd brd_tds print_all_borders">
+      <th>Farmer</th>
+      <th>Village</th>
+      <th>To be Paid</th>
+    </tr>
+  <?php
   for ($i=0;$i<count($records);$i++)
   {
     $farmerRecord = $db->select("fid,name,village_id","farmers","id=".$records[$i]['farmer_id']);
@@ -23,16 +30,16 @@ if (!empty($date))
       $villageName = ucwords($villageRecord[0]['village']);
       if (!is_null($villageRecord)) {
         ?>
-        <div class="unpaid-bills flex">
-          <div>
-            <?php echo $farmerName; ?>
-          </div>
-          <div>
-            <?php echo $villageName; ?>
-          </div>
-        </div>
+        <tr class="brd_b bcd brd_tds print_all_borders">
+          <td><?php echo $farmerName; ?></td>
+          <td><?php echo $villageName; ?></td>
+          <td>-</td>
+        </tr>
         <?php
       }
     }
   }
+  ?>
+  </table>
+  <?php
 }
