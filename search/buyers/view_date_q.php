@@ -67,7 +67,7 @@ if (!empty($date))
 		}
 		else
 		{
-			$records = $db->select("lot_id,quality,lot_number,farmer_id,cost,total_cost,fid","lots","buyer_id=".$buyerId." AND date='".$date."'");
+			$records = $db->select("lot_id,quality,lot_number,farmer_id,cost,total_cost","lots","buyer_id=".$buyerId." AND date='".$date."'");
 		}
 		
 		for ($i=0;$i<count($records);$i++)
@@ -82,7 +82,7 @@ if (!empty($date))
 			$dbCall = new query($con);
 			$record = $dbCall->select("quality","quality","id=".$records[$i]['quality']);
 			$quality = $record[0]['quality'];
-			$record = $dbCall->select("name","farmers","id=".$records[$i]['farmer_id']);
+			$record = $dbCall->select("fid,name","farmers","id=".$records[$i]['farmer_id']);
 			$farmer = ucwords($record[0]['name'])." (".$recrod[0]['fid'].")";
 			?>
 			<tr>
