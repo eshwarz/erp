@@ -38,7 +38,7 @@ if (!empty($date))
           <td><?php echo $farmerName; ?></td>
           <td><?php echo $villageName; ?></td>
           <td>
-            <a href="#" class="button" onclick="openFarmerBill(<?php echo $records[$i]['farmer_id'] ?>); return false;">Show bill</a>
+            <a href="#" onclick="openFarmerBill(<?php echo $records[$i]['farmer_id'] ?>); return false;">Show bill</a>
           </td>
         </tr>
         <?php
