@@ -75,7 +75,7 @@ for ($i=0;$i<count($villagesArray);$i++)
 				<th>Farmer</th>
 				<th>Village</th>
 				<th>Quality</th>
-				<th>Cost per 100 Kg</th>
+				<th>Cost per Kg</th>
 				<th>Lot No</th>
 				<th>Individual Weights</th>
 				<th>Total Weight</th>

@@ -43,7 +43,7 @@ if (!empty($date))
 				<th>Farmer</th>
 				<th>Village</th>
 				<th>Quality</th>
-				<th>Cost per 100 Kg</th>
+				<th>Cost per Kg</th>
 				<th>Lot No</th>
 				<th>Individual Weights</th>
 				<th>Total Weight</th>
@@ -52,7 +52,6 @@ if (!empty($date))
 				<th class="dontPrint">Edit/Delete</th>
 			</tr>
 			<?php
-			var_dump($records);
 			for ($i=0;$i<count($records);$i++)
 			{
 				$farmer = new query($con);
