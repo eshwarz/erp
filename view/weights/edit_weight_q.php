@@ -22,15 +22,15 @@ if ($cost != "Cost")
 {
 	//checking whether lot is pending or not also forming weights array.
 	$pending_flag = 0;
-	$bags;
-	for ($m=1;$m<=$lot_number;$m++)
-	{
-		if ($_REQUEST["bag".$m] == 0)
-		{
-			$pending_flag = 1;
-			break;
-		}
-	}
+	// $bags;
+	// for ($m=1;$m<=$lot_number;$m++)
+	// {
+	// 	if ($_REQUEST["bag".$m] == 0)
+	// 	{
+	// 		$pending_flag = 1;
+	// 		break;
+	// 	}
+	// }
 	for ($p=1;$p<=$lot_number;$p++)
 	{
 		$buyers[] = $_REQUEST["buyer".$p];	
@@ -88,7 +88,7 @@ if ($cost != "Cost")
 		// {
 		// 	$db->insert('weights','lot_id,weight',"".$id.",".$bags[$p]."");
 		// }
-		$db->insert('weights','lot_id,weight',"".$id.",".$total_cost."");
+		$db->insert('weights','lot_id,weight',"".$id.",".$total_weight."");
 	}
 
 	$record = $db->select('*','lots','lot_id='.$id);
