@@ -37,8 +37,9 @@ if ($cost != "Cost")
 		if ($_REQUEST["bag".$p] == 0)
 			$bags[] = $_REQUEST["bag".$p];
 		else
-			$bags[] = $_REQUEST["bag".$p]-$weight_deduction;
+			$bags[] = $_REQUEST["bag".$p] - ($weight_deduction * $lot_number);
 	}
+	var_dump($bags);
 	
 	//calculating total cost
 	$total_weight = array_sum($bags);

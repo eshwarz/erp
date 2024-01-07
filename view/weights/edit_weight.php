@@ -23,6 +23,7 @@ $settings = settings();
 	$weight_deduction = $deduction[0]['weight_deduction'];
 	$default_quality = $records[0]['quality'].",".get_quality_by_id ($records[0]['quality']);
 	$default_buyer = $records[0]['buyer_id'].",".get_buyer_by_id ($records[0]['buyer_id']);
+	$lotNumber = $records[0]['lot_number'];
 	
 	tf('','id','dn','id',$id);
 	if ($settings['multiple_buyers'] == 1)
@@ -32,9 +33,8 @@ $settings = settings();
 	if ($settings['multiple_buyers'] == 0)
 		select_box('Buyer','buyer_id','','buyer_id',"{$default_buyer}",$buyers['names'],$buyers['ids']);
 	tf('Cost','cost','','cost',$records[0]['cost']);
-	tf_disable('Lot Number','lot_number','','lot_number',$records[0]['lot_number']);
+	tf_disable('Lot Number','lot_number','','lot_number',$lotNumber);
 	?>
-	<div class="fb tc p10 pt5">Weights</div>
 	<?php
 	if ($settings['multiple_buyers'] == 1)
 	{
@@ -79,7 +79,7 @@ $settings = settings();
 			if ($lots[$p]['weight'] == 0)
 				$weight = $lots[$p]['weight'];
 			else
-				$weight = $lots[$p]['weight']+$weight_deduction;
+				$weight = $lots[$p]['weight'] + ($weight_deduction * $lotNumber);
 
 			tf('Bag '.$num,'bag'.$num,'','bag'.$num,$weight);
 		}
