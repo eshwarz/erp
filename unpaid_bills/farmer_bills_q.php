@@ -12,7 +12,7 @@ $records = $db->select("*","farmer_bills","date='".$date."' and payed_to is NULL
 if (!empty($date))
 {
   ?>
-  <table cellpadding="5" align="center" class="bill_width_print">
+  <table cellpadding="5" align="center" class="bill_width_print" width="50%">
     <tr class="brd_b bcd brd_tds print_all_borders">
       <th>Farmer</th>
       <th>Village</th>
@@ -30,7 +30,7 @@ if (!empty($date))
       $villageName = ucwords($villageRecord[0]['village']);
       if (!is_null($villageRecord)) {
         ?>
-        <tr class="brd_b bcd brd_tds print_all_borders">
+        <tr class="brd_b print_all_borders">
           <td><?php echo $farmerName; ?></td>
           <td><?php echo $villageName; ?></td>
           <td>-</td>
