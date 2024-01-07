@@ -67,7 +67,7 @@ if (!empty($date))
 		}
 		else
 		{
-			$records = $db->select("lot_id,quality,lot_number,farmer_id,cost,total_cost","lots","buyer_id=".$buyerId." AND date='".$date."'");
+			$records = $db->select("lot_id,quality,lot_number,farmer_id,cost,total_cost,fid","lots","buyer_id=".$buyerId." AND date='".$date."'");
 		}
 		
 		for ($i=0;$i<count($records);$i++)
