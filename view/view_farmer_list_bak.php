@@ -170,7 +170,7 @@ function calculateTotals ($bagsArray,$totalCostsArray)
                     	<th width="100px">Total Cost</th>
                         <th width="100px">Bags</th>
                         <th width="100px">Total Weight</th>
-                        <th width="170px">Cost per 100 Kgs</th>
+                        <th width="170px">Cost per Kg</th>
                     </tr>
                 </table>
 				<?php

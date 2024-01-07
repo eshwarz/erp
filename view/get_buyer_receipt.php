@@ -20,7 +20,7 @@ if (!empty($date))
 			<th>Quality</th>
 			<th>Bags</th>
 			<th>Weight</th>
-			<th>Cost per 100 Kgs</th>
+			<th>Cost per Kg</th>
 			<th>Farmer</th>
 		</tr>
 		

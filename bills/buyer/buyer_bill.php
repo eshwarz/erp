@@ -78,7 +78,7 @@ if (!empty($date))
 			<th>Village</th>
 			<th>Bags</th>
 			<th>Quality</th>
-			<th>Cost per 100 Kgs</th>
+			<th>Cost per Kg</th>
 			<th>Weight</th>
 			<th>Total</th>
 		</tr>

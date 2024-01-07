@@ -354,7 +354,7 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
                     <div class="print_pad"></div>
                     <table cellpadding="2" class="bill_width">
                         <tr class="brd_b bcc brd_tds">
-                            <th width="170px" align="left">Cost per 100 Kgs</th>
+                            <th width="170px" align="left">Cost per Kg</th>
                             <th width="100px" align="left">Total Weight</th>
                             <th width="100px">Bags</th>
                             <th width="100px">Buyer</th>
