@@ -8,6 +8,8 @@ require_once("../functions/functions.php");
 $db = new query($con);
 
 $records = $db->select("*","farmer_bills","date='".$date."' and payed_to is NULL");
+var_dump($records[0]);
+
 if (!empty($date))
 {
   for ($i=0;$i<count($records);$i++)
