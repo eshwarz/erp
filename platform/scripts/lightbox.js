@@ -42,6 +42,7 @@ function body_width()
 
 function open_lb(overlay, popupBox, password, actionOnPassword)
 {
+	window.actionOnPassword = actionOnPassword;
 	var overlay = document.getElementById(overlay);
 	var lb = document.getElementById(popupBox);
 	var authBox = document.getElementById('authentication');
@@ -65,6 +66,7 @@ function open_lb(overlay, popupBox, password, actionOnPassword)
 
 		var authListener = function (event) {
 			if (event.data.requester === 'ceo_here') {
+				console.log('auth listener inside open_lb');
 				actionOnPassword();
 				authBox.style.display = "none";
 			}
@@ -99,3 +101,14 @@ function startAuthentication() {
 		console.log('wrong password!');
 	}
 }
+
+var authListener = function (event) {
+	if (event.data.requester === 'ceo_here') {
+		console.log('auth listener inside open_lb');
+		window.actionOnPassword();
+		authBox.style.display = "none";
+	}
+	// window.removeEventListener('message', authListener, false);
+};
+
+window.addEventListener('message', authListener);
