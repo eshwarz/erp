@@ -130,7 +130,7 @@ else
 	<td align="center"><?php echo get_quality_by_id($quality); ?></td>
 	<td align="center"><?php echo $record[0]['cost']; ?></td>
 	<td align="center"><?php echo $record[0]['lot_number']; ?></td>
-	<td><?php echo implode(',',$bags); ?></td>
+	<td><?php echo $bags[0]; ?></td>
 	<td align="center"><?php echo $total_weight; ?></td>
 	<td align="center"><?php echo $record[0]['total_cost']; ?></td>
 	<td><?php echo get_buyer_by_id($record[0]['buyer_id']); ?></td>
