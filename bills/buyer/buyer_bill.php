@@ -176,18 +176,20 @@ if (!empty($date))
 			<td colspan="6" class="fb" align="right">Accountant</td>
 			<td align="right" style="padding-right:20px;"><?php echo $gumastha = get_float($gumasthaFactor*$totalBags); ?></td>
 		</tr>
-		<tr>
+		<!-- hidden temporarily -->
+		<!-- <tr>
 			<td colspan="6" class="fb" align="right">Special Packing Charges</td>
 			<td align="right" style="padding-right:20px;"><?php echo $bags = get_float($bagsFactor*$totalBags); ?></td>
-		</tr>
+		</tr> -->
 		<tr>
 			<td colspan="6" class="fb" align="right">AMC</td>
 			<td align="right" style="padding-right:20px;"><?php echo $amc = get_float(($amcFactor*$netTotal)/100); ?></td>
 		</tr>
-		<tr>
+		<!-- hidden temporarily -->
+		<!-- <tr>
 			<td colspan="6" class="fb" align="right">Rusum</td>
 			<td align="right" style="padding-right:20px;"><?php echo $rusum = get_float($rusumFactor*$totalBags); ?></td>
-		</tr>
+		</tr> -->
 		<tr>
 			<?php
 			$grandTotal = $netTotal+$commission+$loading+$labour+$gumastha+$bags+$amc+$rusum;
