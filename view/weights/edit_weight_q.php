@@ -39,11 +39,11 @@ if ($cost != "Cost")
 		else
 			$bags[] = $_REQUEST["bag".$p] - ($weight_deduction * $lot_number);
 	}
-	var_dump($bags);
 	
 	//calculating total cost
-	$total_weight = array_sum($bags);
-	$total_cost = $total_weight*($cost/100);
+	// $total_weight = array_sum($bags);
+	$total_weight = $bags[0];
+	$total_cost = $total_weight * ($cost);
 
 	$db = new query($con);
 
@@ -84,10 +84,11 @@ if ($cost != "Cost")
 	}
 	else
 	{
-		for ($p=0;$p<count($bags);$p++)
-		{
-			$db->insert('weights','lot_id,weight',"".$id.",".$bags[$p]."");
-		}
+		// for ($p=0;$p<count($bags);$p++)
+		// {
+		// 	$db->insert('weights','lot_id,weight',"".$id.",".$bags[$p]."");
+		// }
+		$db->insert('weights','lot_id,weight',"".$id.",".$total_cost."");
 	}
 
 	$record = $db->select('*','lots','lot_id='.$id);
