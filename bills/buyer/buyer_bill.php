@@ -248,19 +248,22 @@ if (!empty($date))
 		$db = new query($con);
 		$credit_usage = $db->select('*','buyer_credit_usage','bill_id='.$bill_id);
 		$after_deductions = $after_additions;
-		for ($p=0;$p<count($credit_usage);$p++)
-		{
-			$sub_id = $credit_usage[$p]['id'];
-			?>
-			<tr class="hidden_link" id="remove_deduction_<?php echo $sub_id; ?>">
-				<td colspan="6" align="right" class="fb"><?php echo $credit_usage[$p]['description'] ?></td>
-				<td align="right">
-					<span class="custom_deduction"><?php echo $credit_usage[$p]['money']; ?></span>
-					<a id="<?php echo $sub_id; ?>" class="remove_deduction hide" href="#">X</a>
-				</td>
-			</tr>
-			<?php
-			$after_deductions -= $credit_usage[$p]['money'];
+		if (!is_null($credit_usage)) {
+
+			for ($p=0;$p<count($credit_usage);$p++)
+			{
+				$sub_id = $credit_usage[$p]['id'];
+				?>
+				<tr class="hidden_link" id="remove_deduction_<?php echo $sub_id; ?>">
+					<td colspan="6" align="right" class="fb"><?php echo $credit_usage[$p]['description'] ?></td>
+					<td align="right">
+						<span class="custom_deduction"><?php echo $credit_usage[$p]['money']; ?></span>
+						<a id="<?php echo $sub_id; ?>" class="remove_deduction hide" href="#">X</a>
+					</td>
+				</tr>
+				<?php
+				$after_deductions -= $credit_usage[$p]['money'];
+			}
 		}
 		?>
 
