@@ -296,9 +296,9 @@ function calculateTotals ($bagsArray,$totalCostsArray,$farmerId,$date)
                     <?php
                     //printing farmer's details.
                     $getVillage = new query($con);
-                    $getVillageRecord = $getVillage->select("village_id,name","farmers","id=".$farmerId);
+                    $getVillageRecord = $getVillage->select("village_id,name,fid","farmers","id=".$farmerId);
                     $villageId = $getVillageRecord[0]["village_id"];
-                    $farmerName = ucwords($getVillageRecord[0]["name"]);
+                    $farmerName = ucwords($getVillageRecord[0]["name"])." (".$getVillageRecord[0]["fid"].")";
                     
                     $getVillageName = $getVillage->select("village","villages","id=".$villageId);
                     $villageName = ucwords($getVillageName[0]["village"]);
