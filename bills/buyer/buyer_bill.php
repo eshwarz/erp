@@ -115,7 +115,7 @@ if (!empty($date))
 			$dbCall = new query($con);
 			$record = $dbCall->select("quality","quality","id=".$records[$i]['quality']);
 			$quality = $record[0]['quality'];
-			$record = $dbCall->select("name","farmers","id=".$records[$i]['farmer_id']);
+			$record = $dbCall->select("name,fid","farmers","id=".$records[$i]['farmer_id']);
 			$farmer = ucwords($record[0]['name'])." (".$record[0]['fid'].")";
 			?>
 			<tr>
