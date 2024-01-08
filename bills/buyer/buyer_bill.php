@@ -110,7 +110,7 @@ if (!empty($date))
 			$totalCost = $records[$i]['total_cost'];
 			$bags = $records[$i]['lot_number'];
 			$village = $records[$i]['village'];
-			$weightsArray[] = $weight = round(($records[$i]['total_cost']/$records[$i]['cost'])*100);
+			$weightsArray[] = $weight = round(($records[$i]['total_cost']/$records[$i]['cost']));
 			$cost = $records[$i]['cost'];
 			$dbCall = new query($con);
 			$record = $dbCall->select("quality","quality","id=".$records[$i]['quality']);
