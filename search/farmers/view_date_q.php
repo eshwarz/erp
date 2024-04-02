@@ -227,6 +227,10 @@ if (!empty($receivedDate))
 					$getWeight = new query($con);
 					$weights = $getWeight->select("weight","weights","lot_id=".$lotId);
 					$individualWeights;
+
+					if (!$weights) {
+						$weights = [];
+					}
 					
 					for ($j=0;$j<count($weights);$j++)
 					{
