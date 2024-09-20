@@ -81,25 +81,28 @@ if (!empty($date))
 				$totalWeight = 0;
 				$getWeight = new query($con);
 				$weights = $getWeight->select("*","weights","lot_id=".$records[$i]['lot_id']);
+
 				$individualWeights;
-				for ($j=0;$j<count($weights);$j++)
-				{
-					if($settings['multiple_buyers'] == 1)
+				if (!is_null($weights)) {
+					for ($j=0;$j<count($weights);$j++)
 					{
+						if($settings['multiple_buyers'] == 1)
+						{
+							if ($j == 0)
+								$buyerName = get_buyer_by_id($weights[$j]['buyer_id']);
+							else
+							$buyerName = $buyerName.'<br/>'.get_buyer_by_id($weights[$j]['buyer_id']);
+						}
 						if ($j == 0)
-							$buyerName = get_buyer_by_id($weights[$j]['buyer_id']);
+						{
+							$individualWeights = $weights[$j]["weight"];
+						}
 						else
-						$buyerName = $buyerName.'<br/>'.get_buyer_by_id($weights[$j]['buyer_id']);
+						{
+							$individualWeights = $individualWeights.",".$weights[$j]["weight"];
+						}
+						$totalWeight = $totalWeight+$weights[$j]["weight"];
 					}
-					if ($j == 0)
-					{
-						$individualWeights = $weights[$j]["weight"];
-					}
-					else
-					{
-						$individualWeights = $individualWeights.",".$weights[$j]["weight"];
-					}
-					$totalWeight = $totalWeight+$weights[$j]["weight"];
 				}
 				?>
 				<tr class="hidden_link print_all_borders" id="result_lot_<?php echo $records[$i]['lot_id']; ?>">
